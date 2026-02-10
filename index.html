@@ -1,26 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!--
+    Basic metadata and responsive settings
+    - charset: ensures special characters display correctly
+    - viewport: makes the layout scale properly on mobile devices
+  -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Page title shown in the browser tab -->
   <title>BreachLabs Technologies</title>
-  <meta name="description" content="BreachLabs Technologies is an independent technology lab focused on building software, interactive systems, and immersive digital experiences." />
 
-  <!-- Fonts: Inter (body) + Space Grotesk (headings) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Short description used by search engines and social previews -->
+  <meta
+    name="description"
+    content="BreachLabs Technologies is an independent technology lab focused on building software, interactive systems, and immersive digital experiences."
+  />
 
+  <!--
+    Fonts
+    - Inter: body text (clean and readable)
+    - Space Grotesk: headings (modern tech-lab feel)
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Site CSS  -->
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <!--
+    Sticky header:
+    - Brand on the left
+    - Navigation links on the right
+    - On small screens the nav hides (see CSS media query)
+  -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
+        <!-- Simple brand mark (small square with gradient) -->
         <span class="brand-mark" aria-hidden="true"></span>
+
+        <!-- Brand name (kept short as "BreachLabs" for stronger identity) -->
         <span class="brand-name">BreachLabs</span>
       </div>
 
+      <!-- Main navigation -->
       <nav class="nav">
         <a href="#what-we-build">What We Build</a>
         <a href="#projects">Projects</a>
@@ -31,9 +62,13 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- =========================
+         HERO SECTION (Above the fold)
+         ========================= -->
     <section class="hero">
       <div class="container hero-inner">
+
+        <!-- Left: Copy -->
         <div class="hero-copy">
           <p class="eyebrow">BreachLabs Technologies</p>
           <h1>Exploring software, systems, and digital experiences.</h1>
@@ -45,21 +80,34 @@
             new ways people interact with digital systems.
           </p>
 
+          <!-- Primary calls-to-action -->
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">View Projects</a>
             <a class="btn btn-secondary" href="#contact">Get in Touch</a>
           </div>
 
+          <!--
+            Status note: subtle and professional
+            - Communicates that projects will be published progressively
+            - Avoids "coming soon" / "work in progress" vibes
+          -->
+          <p class="status-note">
+            <strong>Status:</strong> This site is under active development. Projects and updates will be published progressively.
+          </p>
+
+          <!-- Quick “pill” labels (keywords) -->
           <div class="hero-meta">
             <span class="pill">Software</span>
             <span class="pill">Interactive Systems</span>
             <span class="pill">XR / VR</span>
-            <span class="pill">R&D</span>
+            <span class="pill">R&amp;D</span>
           </div>
         </div>
 
+        <!-- Right: Decorative panel -->
         <div class="hero-panel" aria-hidden="true">
           <div class="panel-grid"></div>
+
           <div class="panel-card">
             <div class="panel-title">Lab Notes</div>
             <div class="panel-line"></div>
@@ -68,15 +116,20 @@
             <div class="panel-line short"></div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- WHAT WE BUILD -->
+    <!-- =========================
+         WHAT WE BUILD
+         ========================= -->
     <section class="section" id="what-we-build">
       <div class="container">
         <h2>What We Build</h2>
+
+        <!-- Intro  -->
         <p class="section-sub">
-          We build across three pillars—kept intentionally broad so the studio can evolve without rebranding.
+          We focus on three core pillars that define how we design, build, and explore technology.
         </p>
 
         <div class="grid-3">
@@ -89,7 +142,7 @@
           </article>
 
           <article class="card">
-            <h3>Interactive & Immersive Systems</h3>
+            <h3>Interactive &amp; Immersive Systems</h3>
             <p>
               We create interactive experiences across games, simulations, and VR/XR. From prototypes to production-ready builds,
               we explore how technology can be engaging, intuitive, and human-centered.
@@ -106,7 +159,9 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- =========================
+         PROJECTS
+         ========================= -->
     <section class="section" id="projects">
       <div class="container">
         <h2>Selected Projects</h2>
@@ -120,6 +175,7 @@
             <h3>Project Slots</h3>
             <p>As projects go public, this section becomes a clean grid of product cards with short descriptions and links.</p>
           </div>
+
           <div class="card card-muted">
             <h3>Early Access</h3>
             <p>If you want to follow progress, contact us. We’ll share updates when releases are ready.</p>
@@ -132,10 +188,13 @@
       </div>
     </section>
 
-    <!-- VISION -->
+    <!-- =========================
+         VISION
+         ========================= -->
     <section class="section" id="vision">
       <div class="container">
         <h2>Vision</h2>
+
         <div class="card">
           <p class="lead-tight">
             We believe technology is at its best when it feels seamless—when systems are reliable, experiences are immersive,
@@ -149,24 +208,32 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- =========================
+         CONTACT
+         ========================= -->
     <section class="section" id="contact">
       <div class="container">
         <h2>Contact</h2>
+
         <div class="card">
           <p class="section-sub">For partnerships, collaboration, or general enquiries:</p>
+
           <p class="contact-line">
             <span>Email:</span>
-            <a href="mailto:hello@breachlabs.tech">hello@breachlabs.tech</a>
+            <!-- Temporary email for now -->
+            <a href="mailto:rolbitdev@gmail.com">rolbitdev@gmail.com</a>
           </p>
+
+          <!-- Optional small note -->
           <p class="fineprint">
-            (Not Available)
+            Business email will be added soon.
           </p>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>© <span id="year"></span> BreachLabs Technologies</span>
@@ -174,9 +241,9 @@
     </div>
   </footer>
 
+  <!-- Small script to auto-update the year -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
