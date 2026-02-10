@@ -1,65 +1,42 @@
-/*
-  BreachLabs (Dark Minimal Tech-Lab Style)
-  ---------------------------------------
-  This stylesheet defines:
-  - Colors and layout tokens (CSS variables)
-  - Typography and spacing
-  - Card/grid system
-  - Responsive breakpoints
-*/
-
 :root{
-  /* Core surfaces */
   --bg: #0b0f14;
   --surface: #101826;
   --surface-2: #0f1623;
-
-  /* Borders and text */
   --border: rgba(255,255,255,0.08);
+
   --text: rgba(255,255,255,0.92);
   --muted: rgba(255,255,255,0.68);
 
-  /* Accent (links, primary CTA) */
   --accent: #35c7ff;
   --accent-2: #2a9df4;
 
-  /* Effects */
   --shadow: 0 18px 60px rgba(0,0,0,0.45);
   --radius: 18px;
 }
 
-/* Global reset / baseline */
 *{ box-sizing: border-box; }
 html,body{ height: 100%; }
 
-/* Page base styles */
 body{
   margin:0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-
-  /* Subtle “lab glow” background */
   background:
     radial-gradient(1200px 700px at 70% -10%, rgba(53,199,255,0.12), transparent 60%),
     radial-gradient(900px 500px at 10% 10%, rgba(42,157,244,0.10), transparent 55%),
     var(--bg);
-
   color: var(--text);
   line-height: 1.6;
 }
 
-/* Links */
 a{ color: var(--accent); text-decoration: none; }
 a:hover{ text-decoration: underline; }
 
-/* Content container: keeps text readable on large screens */
 .container{
   width: min(1120px, calc(100% - 48px));
   margin: 0 auto;
 }
 
-/* =========================
-   HEADER
-   ========================= */
+/* HEADER */
 .site-header{
   position: sticky;
   top:0;
@@ -76,7 +53,7 @@ a:hover{ text-decoration: underline; }
   padding: 14px 0;
 }
 
-/* Brand area */
+/* BRAND */
 .brand{
   display:flex;
   align-items:center;
@@ -85,38 +62,132 @@ a:hover{ text-decoration: underline; }
   letter-spacing: 0.2px;
 }
 
-.brand-mark{
-  width: 14px;
-  height: 14px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, var(--accent), rgba(53,199,255,0.2));
-  box-shadow: 0 0 0 4px rgba(53,199,255,0.10);
-}
-
+/* Wordmark */
 .brand-name{
+  position: relative;
   font-family: "Space Grotesk", Inter, sans-serif;
   font-size: 18px;
+  padding-bottom: 6px; /* space for underline animation */
 }
 
-/* Navigation */
+/*
+  Underline animation (Option 3)
+  - A thin line draws left->right
+  - A small dot sits at the "drawing head"
+  - Subtle loop (premium micro-interaction)
+*/
+.brand-underline{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.brand-underline::before{
+  content:"";
+  position:absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(53,199,255,0.0), rgba(53,199,255,0.85), rgba(42,157,244,0.0));
+  transform: translateX(-110%);
+  animation: underlineSweep 5.2s ease-in-out infinite;
+  opacity: 0.75;
+}
+
+.brand-underline::after{
+  content:"";
+  position:absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(53,199,255,0.12);
+  transform: translate(-120%, -50%);
+  animation: dotSweep 5.2s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes underlineSweep{
+  0%, 18% { transform: translateX(-110%); opacity: 0; }
+  28% { opacity: 0.8; }
+  52% { transform: translateX(0%); opacity: 0.85; }
+  70% { opacity: 0.35; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+
+@keyframes dotSweep{
+  0%, 18% { left: 0%; opacity: 0; }
+  28% { opacity: 0.95; }
+  52% { left: 100%; opacity: 0.95; }
+  70% { opacity: 0.25; }
+  100% { left: 110%; opacity: 0; }
+}
+
+/*
+  Particle mark (optional upgrade)
+  - 4 tiny dots in a cluster
+  - Gentle drift animation
+  - Keeps the identity "lab / systems"
+*/
+.brand-mark--particles{
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+.brand-mark--particles .p{
+  position:absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(53,199,255,0.85);
+  box-shadow: 0 0 0 4px rgba(53,199,255,0.10);
+  opacity: 0.9;
+}
+
+/* dot positions */
+.brand-mark--particles .p1{ left: 1px; top: 6px; }
+.brand-mark--particles .p2{ left: 8px; top: 2px; width:5px; height:5px; opacity:0.75; }
+.brand-mark--particles .p3{ left: 10px; top: 10px; width:4px; height:4px; opacity:0.65; }
+.brand-mark--particles .p4{ left: 4px; top: 12px; width:3px; height:3px; opacity:0.55; }
+
+.brand-mark--particles{
+  animation: particleDrift 6.5s ease-in-out infinite;
+}
+
+@keyframes particleDrift{
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-1.5px); }
+}
+
+/* Respect accessibility: reduce motion preference */
+@media (prefers-reduced-motion: reduce){
+  .brand-underline::before,
+  .brand-underline::after,
+  .brand-mark--particles{
+    animation: none !important;
+  }
+}
+
+/* NAV */
 .nav{
   display:flex;
   gap: 18px;
   align-items:center;
 }
-
 .nav a{
   color: var(--muted);
   font-weight: 500;
   font-size: 14px;
 }
-
-.nav a:hover{
-  color: var(--text);
-  text-decoration:none;
-}
-
-/* Contact button on nav */
+.nav a:hover{ color: var(--text); text-decoration:none; }
 .nav-cta{
   padding: 8px 12px;
   border: 1px solid var(--border);
@@ -124,21 +195,14 @@ a:hover{ text-decoration: underline; }
   background: rgba(255,255,255,0.02);
 }
 
-/* =========================
-   HERO
-   ========================= */
-.hero{
-  padding: 64px 0 24px;
-}
-
+/* HERO */
+.hero{ padding: 64px 0 24px; }
 .hero-inner{
   display:grid;
   grid-template-columns: 1.25fr 0.75fr;
   gap: 28px;
   align-items: stretch;
 }
-
-/* Small uppercase label above the headline */
 .eyebrow{
   margin:0 0 10px;
   color: var(--muted);
@@ -147,33 +211,26 @@ a:hover{ text-decoration: underline; }
   text-transform: uppercase;
   font-size: 12px;
 }
-
-/* Headings */
 h1,h2,h3{
   font-family: "Space Grotesk", Inter, sans-serif;
   line-height: 1.15;
   margin: 0 0 12px;
 }
-
 h1{ font-size: clamp(32px, 4vw, 54px); }
 h2{ font-size: clamp(22px, 2.4vw, 32px); }
 h3{ font-size: 18px; margin-bottom: 8px; }
 
-/* Hero body text */
 .lead{
   color: rgba(255,255,255,0.78);
   font-size: 16px;
   max-width: 62ch;
 }
-
-/* Used in the Vision block */
 .lead-tight{
   color: rgba(255,255,255,0.78);
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-/* Buttons row */
 .hero-actions{
   display:flex;
   gap: 12px;
@@ -181,7 +238,6 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   flex-wrap: wrap;
 }
 
-/* Buttons */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -197,36 +253,28 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: #06111b;
 }
-.btn-primary:hover{
-  text-decoration:none;
-  filter: brightness(1.05);
-}
+.btn-primary:hover{ text-decoration:none; filter: brightness(1.05); }
 
 .btn-secondary{
   border-color: var(--border);
   background: rgba(255,255,255,0.02);
   color: var(--text);
 }
-.btn-secondary:hover{
-  text-decoration:none;
-  border-color: rgba(255,255,255,0.16);
-}
+.btn-secondary:hover{ text-decoration:none; border-color: rgba(255,255,255,0.16); }
 
-/* Status note (under development) */
+/* Under development note */
 .status-note{
   margin-top: 12px;
   color: rgba(255,255,255,0.55);
   font-size: 13px;
 }
 
-/* Keyword pills */
 .hero-meta{
   display:flex;
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 18px;
 }
-
 .pill{
   padding: 6px 10px;
   border-radius: 999px;
@@ -237,7 +285,6 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   font-weight: 600;
 }
 
-/* Right decorative panel in hero */
 .hero-panel{
   position: relative;
   border-radius: var(--radius);
@@ -246,7 +293,6 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   box-shadow: var(--shadow);
   overflow:hidden;
 }
-
 .panel-grid{
   position:absolute;
   inset:0;
@@ -256,7 +302,6 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   background-size: 34px 34px;
   opacity: 0.35;
 }
-
 .panel-card{
   position:absolute;
   left: 18px;
@@ -268,14 +313,12 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   background: rgba(11,15,20,0.60);
   backdrop-filter: blur(10px);
 }
-
 .panel-title{
   font-family: "Space Grotesk", Inter, sans-serif;
   font-weight: 600;
   margin-bottom: 12px;
   color: rgba(255,255,255,0.88);
 }
-
 .panel-line{
   height: 10px;
   border-radius: 999px;
@@ -284,21 +327,15 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 }
 .panel-line.short{ width: 68%; }
 
-/* =========================
-   SECTIONS, GRIDS, CARDS
-   ========================= */
-.section{
-  padding: 44px 0;
-}
+/* SECTIONS */
+.section{ padding: 44px 0; }
 
-/* Section subtitle text */
 .section-sub{
   margin-top: 0;
   color: var(--muted);
   max-width: 70ch;
 }
 
-/* 3-column grid for "What We Build" */
 .grid-3{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -306,7 +343,6 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   margin-top: 18px;
 }
 
-/* 2-column grid for "Selected Projects" */
 .grid-2{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
@@ -314,30 +350,17 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   margin-top: 18px;
 }
 
-/* Card component */
 .card{
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: rgba(16,24,38,0.55);
   padding: 18px;
 }
+.card p{ color: rgba(255,255,255,0.78); margin: 0; }
+.card-muted{ background: rgba(15,22,35,0.55); }
 
-.card p{
-  color: rgba(255,255,255,0.78);
-  margin: 0;
-}
+.section-actions{ margin-top: 16px; }
 
-/* Slightly darker card variant */
-.card-muted{
-  background: rgba(15,22,35,0.55);
-}
-
-/* Button area under sections */
-.section-actions{
-  margin-top: 16px;
-}
-
-/* Contact line layout */
 .contact-line{
   margin: 0;
   display:flex;
@@ -345,28 +368,22 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   align-items:center;
   flex-wrap: wrap;
 }
-
 .contact-line span{
   color: var(--muted);
   font-weight: 600;
 }
-
-/* Small helper text in contact section */
 .fineprint{
   margin-top: 10px !important;
   color: rgba(255,255,255,0.60);
   font-size: 12px;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+/* FOOTER */
 .site-footer{
   border-top: 1px solid var(--border);
   padding: 18px 0;
   margin-top: 20px;
 }
-
 .footer-inner{
   display:flex;
   justify-content: space-between;
@@ -375,23 +392,15 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   color: rgba(255,255,255,0.70);
   font-size: 13px;
 }
-
 .muted{ color: var(--muted); }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
+/* Responsive */
 @media (max-width: 920px){
-  /* Stack hero into one column */
   .hero-inner{ grid-template-columns: 1fr; }
   .hero-panel{ min-height: 220px; }
 }
-
 @media (max-width: 760px){
-  /* Hide nav on small screens (keeps header clean) */
   .nav{ display:none; }
-
-  /* Make grids single column on mobile */
   .grid-3{ grid-template-columns: 1fr; }
   .grid-2{ grid-template-columns: 1fr; }
 }
