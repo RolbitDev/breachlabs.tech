@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Document setup -->
+  <!-- Basic document setup -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -12,24 +12,24 @@
     content="BreachLabs Technologies is an independent technology studio building structured web platforms and business-focused digital systems."
   />
 
-  <!-- Icons -->
+  <!-- Site icons (using only the files you currently have) -->
   <link rel="icon" type="image/svg+xml" href="breachlabs-icon-primary.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="breachlabs-icon-primary.png" />
   <link rel="apple-touch-icon" href="breachlabs-icon-primary.png" />
 
   <!-- Social metadata -->
   <meta property="og:title" content="BreachLabs Technologies" />
-  <meta property="og:description" content="Custom web platforms engineered for growth, reliability, and operational clarity." />
+  <meta property="og:description" content="Custom web platforms engineered for growth and reliability." />
   <meta property="og:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
   <meta property="og:url" content="https://breachlabs.tech" />
   <meta property="og:type" content="website" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="BreachLabs Technologies" />
-  <meta name="twitter:description" content="Custom web platforms engineered for growth, reliability, and operational clarity." />
+  <meta name="twitter:description" content="Custom web platforms engineered for growth and reliability." />
   <meta name="twitter:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
 
-  <!-- Structured data -->
+  <!-- Structured data (helps search engines understand your site) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -54,31 +54,36 @@
 </head>
 
 <body>
+  <!-- Sticky header -->
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Brand -->
-      <div class="brand">
-        <a class="brand-link" href="#top" aria-label="BreachLabs home">
-          <picture class="brand-logo">
+
+      <!-- Brand (logo + name) -->
+      <a class="brand" href="#top" aria-label="BreachLabs home">
+        <!-- Logo container (keeps it neat in the header) -->
+        <span class="brand-logo" aria-hidden="true">
+          <picture>
             <source srcset="breachlabs-icon-primary.svg" type="image/svg+xml" />
             <img
               src="breachlabs-icon-primary.png"
-              alt="BreachLabs icon"
+              alt=""
               width="36"
               height="36"
               loading="eager"
               decoding="async"
             />
           </picture>
+        </span>
 
+        <!-- Brand text -->
+        <span class="brand-text">
           <span class="brand-name">
             BreachLabs
             <span class="brand-underline" aria-hidden="true"></span>
           </span>
-        </a>
-
-        <span class="brand-sub">Technologies</span>
-      </div>
+          <span class="brand-sub">Technologies</span>
+        </span>
+      </a>
 
       <!-- Navigation -->
       <nav class="nav" aria-label="Primary">
@@ -92,9 +97,11 @@
   </header>
 
   <main id="top">
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
+
+        <!-- Left: copy -->
         <div class="hero-copy">
           <p class="eyebrow">Independent Technology Studio</p>
 
@@ -122,25 +129,39 @@
           </div>
         </div>
 
-        <div class="hero-panel" aria-hidden="true">
-          <div class="panel-grid"></div>
-
-          <div class="panel-watermark">
-            <img src="breachlabs-icon-primary.png" alt="" />
+        <!-- Right: clean "capability" panel (no watermark, no visual noise) -->
+        <aside class="hero-panel" aria-label="Highlights">
+          <div class="panel-top">
+            <div class="panel-title">What we optimise for</div>
+            <div class="panel-sub">Clear outcomes, predictable delivery, stable systems.</div>
           </div>
 
-          <div class="panel-card">
-            <div class="panel-title">System Snapshot</div>
-            <div class="panel-line"></div>
-            <div class="panel-line short"></div>
-            <div class="panel-line"></div>
-            <div class="panel-line short"></div>
+          <div class="panel-list">
+            <div class="panel-item">
+              <div class="panel-k">Reliability</div>
+              <div class="panel-v">Reduce breakpoints and regressions.</div>
+            </div>
+
+            <div class="panel-item">
+              <div class="panel-k">Scalability</div>
+              <div class="panel-v">Strengthen foundations for growth.</div>
+            </div>
+
+            <div class="panel-item">
+              <div class="panel-k">Operational clarity</div>
+              <div class="panel-v">Dashboards, admin, workflows, visibility.</div>
+            </div>
           </div>
-        </div>
+
+          <div class="panel-foot">
+            <a class="panel-link" href="#approach">See delivery approach →</a>
+          </div>
+        </aside>
+
       </div>
     </section>
 
-    <!-- Platforms -->
+    <!-- PLATFORMS -->
     <section class="section" id="platforms">
       <div class="container">
         <div class="section-head">
@@ -168,7 +189,7 @@
           <article class="card">
             <h3>Stabilisation &amp; Scaling</h3>
             <p>
-              Reliability upgrades, performance improvements, and structured refactors that strengthen platforms as traffic and complexity grow.
+              Reliability upgrades, performance improvements, and structured refactors that strengthen platforms as usage and complexity grow.
             </p>
           </article>
         </div>
@@ -190,7 +211,7 @@
       </div>
     </section>
 
-    <!-- Approach -->
+    <!-- APPROACH -->
     <section class="section" id="approach">
       <div class="container">
         <div class="section-head">
@@ -248,7 +269,7 @@
       </div>
     </section>
 
-    <!-- Work -->
+    <!-- WORK -->
     <section class="section" id="work">
       <div class="container">
         <div class="section-head">
@@ -290,7 +311,7 @@
       </div>
     </section>
 
-    <!-- Vision -->
+    <!-- VISION -->
     <section class="section" id="vision">
       <div class="container">
         <div class="section-head">
@@ -311,7 +332,7 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="container">
         <div class="section-head">
@@ -336,7 +357,7 @@
             </div>
 
             <div class="contact-item">
-              <div class="contact-k">Response</div>
+              <div class="contact-k">Note</div>
               <div class="contact-v">Business email will be added soon.</div>
             </div>
           </div>
@@ -349,6 +370,7 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
@@ -363,7 +385,7 @@
   </footer>
 
   <script>
-    // Footer year update
+    // Keeps the copyright year current without editing the file yearly
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
