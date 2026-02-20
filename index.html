@@ -3,8 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>BreachLabs Technologies</title>
   <meta name="description" content="BreachLabs Technologies is an independent technology lab focused on building software, interactive systems, and immersive digital experiences." />
+
+  <!-- Site icons (browser tab, bookmarks, mobile home screen) -->
+  <link rel="icon" type="image/svg+xml" href="breachlabs-icon-primary.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="breachlabs-icon-primary.png" />
+  <link rel="apple-touch-icon" href="breachlabs-icon-primary.png" />
+
+  <!-- Social previews (used by Facebook, WhatsApp, iMessage, Discord, etc.) -->
+  <meta property="og:title" content="BreachLabs Technologies" />
+  <meta property="og:description" content="Exploring software, systems, and immersive digital experiences." />
+  <meta property="og:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
+  <meta property="og:url" content="https://breachlabs.tech" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter/X preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BreachLabs Technologies" />
+  <meta name="twitter:description" content="Exploring software, systems, and immersive digital experiences." />
+  <meta name="twitter:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,6 +33,7 @@
     rel="stylesheet"
   />
 
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -21,30 +41,34 @@
   <header class="site-header">
     <div class="container header-inner">
 
-      <!-- Brand: particle cluster + wordmark -->
+      <!-- Brand (icon + wordmark) -->
       <div class="brand">
-        <!--
-          Particle mark:
-          - Small, minimal cluster of dots (signals "lab / systems")
-        -->
-        <span class="brand-mark brand-mark--particles" aria-hidden="true">
-          <span class="p p1"></span>
-          <span class="p p2"></span>
-          <span class="p p3"></span>
-          <span class="p p4"></span>
-        </span>
+        <a class="brand-link" href="#top" aria-label="BreachLabs home">
+          <!--
+            Picture element allows modern formats with fallback.
+            SVG is crisp at all sizes; PNG is a reliable fallback.
+          -->
+          <picture class="brand-logo">
+            <source srcset="breachlabs-icon-primary.svg" type="image/svg+xml" />
+            <img
+              src="breachlabs-icon-primary.png"
+              alt="BreachLabs icon"
+              width="36"
+              height="36"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
 
-        <!--
-          Wordmark:
-          - Keep text clean for readability
-          - Underline animation is added via CSS (brand-underline)
-        -->
-        <span class="brand-name">
-          BreachLabs
-          <span class="brand-underline" aria-hidden="true"></span>
-        </span>
+          <!-- Wordmark with subtle underline animation -->
+          <span class="brand-name">
+            BreachLabs
+            <span class="brand-underline" aria-hidden="true"></span>
+          </span>
+        </a>
       </div>
 
+      <!-- Navigation -->
       <nav class="nav">
         <a href="#what-we-build">What We Build</a>
         <a href="#projects">Projects</a>
@@ -54,7 +78,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
@@ -74,7 +98,6 @@
             <a class="btn btn-secondary" href="#contact">Get in Touch</a>
           </div>
 
-          <!-- Under development note  -->
           <p class="status-note">
             <strong>Status:</strong> This site is under active development. Projects and updates will be published progressively.
           </p>
@@ -202,6 +225,7 @@
   </footer>
 
   <script>
+    // Footer year auto-update
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
