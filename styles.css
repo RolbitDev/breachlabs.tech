@@ -91,7 +91,7 @@ a:hover{ text-decoration: underline; }
   display:block;
   height: 60px;               /* bigger logo */
   width: auto;
-  max-width: 320px;           /* prevents it from consuming too much horizontal room */
+  max-width: 420px;           /* prevents it from consuming too much horizontal room */
   object-fit: contain;
   opacity: 0.98;
 }
