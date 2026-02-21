@@ -1,16 +1,3 @@
-/*
-  ==========================================================
-  BreachLabs Technologies - styles.css
-  Version: Header/Footer sizing + layout fixes
-  Goals:
-  - Bigger, readable header logo WITHOUT a huge empty brand block
-  - Nav stays on the right
-  - Footer icon bigger but footer not "inflated"
-  - Responsive behavior stays clean
-  ==========================================================
-*/
-
-
 :root{
   --bg: #0b0f14;
   --surface: #101826;
