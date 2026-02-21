@@ -434,7 +434,7 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 
 .site-footer{
   border-top: 1px solid var(--border);
-  padding: 18px 0;
+  padding: 16px 0;
   margin-top: 20px;
 }
 
@@ -459,11 +459,14 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 .footer-mark{
   width: 44px;
   height: 44px;
+
   display:inline-flex;
   align-items:center;
   justify-content:center;
+
   border-radius: 10px;
   overflow:hidden;
+
   border: 1px solid rgba(255,255,255,0.06);
   background: rgba(255,255,255,0.02);
 }
@@ -473,6 +476,9 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   height: 100%;
   object-fit: contain;
   display:block;
+
+  transform: scale(1.35);        
+  transform-origin: center;      
 }
 
 .muted{ color: var(--muted); }
