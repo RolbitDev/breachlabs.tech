@@ -78,12 +78,11 @@ a:hover{ text-decoration: underline; }
 
 /*
   Header logo size:
-  - Increase height for better presence
   - Keep max-width so it doesn’t crush nav
 */
 .brand-wordmark{
   display:block;
-  height: 48px;         /* increased from 34px */
+  height: 60px;         
   width: auto;
   max-width: 360px;     /* increased but still capped for layout stability */
   object-fit: contain;
