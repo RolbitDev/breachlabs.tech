@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Basic document setup -->
+  <!-- Document setup -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -12,7 +12,7 @@
     content="BreachLabs Technologies is an independent software studio building practical products: apps, interactive systems, and business platforms."
   />
 
-  <!-- Favicons / browser icon -->
+  <!-- Browser icons -->
   <link rel="icon" type="image/svg+xml" href="breachlabs-icon-primary.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="breachlabs-icon-primary.png" />
   <link rel="apple-touch-icon" href="breachlabs-icon-primary.png" />
@@ -29,7 +29,7 @@
   <meta name="twitter:description" content="An independent software studio building apps, interactive systems, and business platforms." />
   <meta name="twitter:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
 
-  <!-- Structured data (helps search engines understand your site) -->
+  <!-- Structured data -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -58,17 +58,19 @@
   <header class="site-header">
     <div class="container header-inner">
 
-      <!-- Brand (uses the horizontal logo as primary header identity) -->
+      <!-- Brand -->
       <a class="brand" href="#top" aria-label="BreachLabs home">
         <!--
-          SVG-first with PNG fallback.
-          This pattern is safe in modern browsers and does not break if SVG fails.
+          Wordmark:
+          - SVG preferred
+          - PNG fallback
+          - PNG filenames contain spaces, so URLs use %20
         -->
         <picture class="brand-wordmark" aria-hidden="true">
           <source srcset="BL_Logo_Horizontal_Dark.svg" type="image/svg+xml" />
           <img
-            src="BL_Logo_Horizontal_Dark 2x.png"
-            srcset="BL_Logo_Horizontal_Dark 2x.png 2x, BL_Logo_Horizontal_Dark 4x.png 4x"
+            src="BL_Logo_Horizontal_Dark%202x.png"
+            srcset="BL_Logo_Horizontal_Dark%202x.png 2x, BL_Logo_Horizontal_Dark%204x.png 4x"
             alt="BreachLabs Technologies"
             decoding="async"
             loading="eager"
@@ -90,6 +92,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
+
         <div class="hero-copy">
           <p class="eyebrow">Independent Software Studio</p>
 
@@ -117,14 +120,15 @@
           </div>
         </div>
 
-        <!-- Right-side panel with a subtle stacked logo watermark -->
+        <!-- Right-side panel -->
         <aside class="hero-panel" aria-label="Highlights">
+          <!-- Subtle watermark mark -->
           <div class="hero-mark" aria-hidden="true">
             <picture>
               <source srcset="BL_Logo_Stacked_Dark.svg" type="image/svg+xml" />
               <img
-                src="BL_Logo_Stacked_Dark 2x.png"
-                srcset="BL_Logo_Stacked_Dark 2x.png 2x, BL_Logo_Stacked_Dark 4x.png 4x"
+                src="BL_Logo_Stacked_Dark%202x.png"
+                srcset="BL_Logo_Stacked_Dark%202x.png 2x, BL_Logo_Stacked_Dark%204x.png 4x"
                 alt=""
                 decoding="async"
                 loading="lazy"
@@ -158,6 +162,7 @@
             <a class="panel-link" href="#approach">See how we work →</a>
           </div>
         </aside>
+
       </div>
     </section>
 
@@ -322,13 +327,12 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <!-- Footer uses the stacked logo in a small, clean way -->
         <span class="footer-mark" aria-hidden="true">
           <picture>
             <source srcset="BL_Logo_Stacked_Dark.svg" type="image/svg+xml" />
             <img
-              src="BL_Logo_Stacked_Dark 2x.png"
-              srcset="BL_Logo_Stacked_Dark 2x.png 2x, BL_Logo_Stacked_Dark 4x.png 4x"
+              src="BL_Logo_Stacked_Dark%202x.png"
+              srcset="BL_Logo_Stacked_Dark%202x.png 2x, BL_Logo_Stacked_Dark%204x.png 4x"
               alt=""
               decoding="async"
               loading="lazy"
