@@ -84,7 +84,7 @@ a:hover{ text-decoration: underline; }
   display:block;
   height: 60px;         
   width: auto;
-  max-width: 520px;     /* increased but still capped for layout stability */
+  max-width: 420px;     /* increased but still capped for layout stability */
   object-fit: contain;
   opacity: 0.98;
 }
