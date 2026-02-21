@@ -82,9 +82,9 @@ a:hover{ text-decoration: underline; }
 */
 .brand-wordmark{
   display:block;
-  height: 60px;         
+  height: 100px;         
   width: auto;
-  max-width: 360px;     /* increased but still capped for layout stability */
+  max-width: 460px;     /* increased but still capped for layout stability */
   object-fit: contain;
   opacity: 0.98;
 }
