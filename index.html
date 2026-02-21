@@ -1,23 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Document setup -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Primary identity -->
   <title>BreachLabs Technologies</title>
   <meta
     name="description"
     content="BreachLabs Technologies is an independent software studio building practical products: apps, interactive systems, and business platforms."
   />
 
-  <!-- Browser icons -->
+  <!-- Site icon -->
   <link rel="icon" type="image/svg+xml" href="breachlabs-icon-primary.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="breachlabs-icon-primary.png" />
   <link rel="apple-touch-icon" href="breachlabs-icon-primary.png" />
 
-  <!-- Social metadata -->
+  <!-- Social -->
   <meta property="og:title" content="BreachLabs Technologies" />
   <meta property="og:description" content="An independent software studio building apps, interactive systems, and business platforms." />
   <meta property="og:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
@@ -29,7 +27,7 @@
   <meta name="twitter:description" content="An independent software studio building apps, interactive systems, and business platforms." />
   <meta name="twitter:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
 
-  <!-- Structured data -->
+  <!-- Organization schema -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -49,36 +47,24 @@
     rel="stylesheet"
   />
 
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- Sticky header -->
   <header class="site-header">
     <div class="container header-inner">
-
       <!-- Brand -->
       <a class="brand" href="#top" aria-label="BreachLabs home">
-        <!--
-          Wordmark:
-          - SVG preferred
-          - PNG fallback
-          - PNG filenames contain spaces, so URLs use %20
-        -->
-        <picture class="brand-wordmark" aria-hidden="true">
-          <source srcset="BL_Logo_Horizontal_Dark.svg" type="image/svg+xml" />
-          <img
-            src="BL_Logo_Horizontal_Dark%202x.png"
-            srcset="BL_Logo_Horizontal_Dark%202x.png 2x, BL_Logo_Horizontal_Dark%204x.png 4x"
-            alt="BreachLabs Technologies"
-            decoding="async"
-            loading="eager"
-          />
-        </picture>
+        <!-- Using SVG only to avoid filename mismatch and 404s -->
+        <img
+          class="brand-wordmark"
+          src="BL_Logo_Horizontal_Dark.svg"
+          alt="BreachLabs Technologies"
+          decoding="async"
+        />
       </a>
 
-      <!-- Navigation -->
+      <!-- Nav -->
       <nav class="nav" aria-label="Primary">
         <a href="#what-we-build">What We Build</a>
         <a href="#projects">Projects</a>
@@ -89,7 +75,6 @@
   </header>
 
   <main id="top">
-    <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
 
@@ -120,20 +105,10 @@
           </div>
         </div>
 
-        <!-- Right-side panel -->
         <aside class="hero-panel" aria-label="Highlights">
-          <!-- Subtle watermark mark -->
+          <!-- Watermark -->
           <div class="hero-mark" aria-hidden="true">
-            <picture>
-              <source srcset="BL_Logo_Stacked_Dark.svg" type="image/svg+xml" />
-              <img
-                src="BL_Logo_Stacked_Dark%202x.png"
-                srcset="BL_Logo_Stacked_Dark%202x.png 2x, BL_Logo_Stacked_Dark%204x.png 4x"
-                alt=""
-                decoding="async"
-                loading="lazy"
-              />
-            </picture>
+            <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" />
           </div>
 
           <div class="panel-top">
@@ -146,12 +121,10 @@
               <div class="panel-k">Product delivery</div>
               <div class="panel-v">From concept to a working release with clean foundations.</div>
             </div>
-
             <div class="panel-item">
               <div class="panel-k">Structured systems</div>
               <div class="panel-v">Stable, maintainable builds designed to evolve.</div>
             </div>
-
             <div class="panel-item">
               <div class="panel-k">Practical experimentation</div>
               <div class="panel-v">Test ideas fast, ship what works, refine what matters.</div>
@@ -166,7 +139,6 @@
       </div>
     </section>
 
-    <!-- WHAT WE BUILD -->
     <section class="section" id="what-we-build">
       <div class="container">
         <div class="section-head">
@@ -204,7 +176,6 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section class="section" id="projects">
       <div class="container">
         <div class="section-head">
@@ -250,7 +221,6 @@
       </div>
     </section>
 
-    <!-- APPROACH -->
     <section class="section" id="approach">
       <div class="container">
         <div class="section-head">
@@ -265,9 +235,7 @@
             <div class="step-index">01</div>
             <div class="step-body">
               <h3>Define</h3>
-              <p>
-                Confirm scope, success criteria, constraints, and the simplest version that can ship without cutting corners.
-              </p>
+              <p>Confirm scope, success criteria, constraints, and the simplest version that can ship without cutting corners.</p>
             </div>
           </div>
 
@@ -275,9 +243,7 @@
             <div class="step-index">02</div>
             <div class="step-body">
               <h3>Build</h3>
-              <p>
-                Implement with clean structure and predictable conventions, keeping complexity under control.
-              </p>
+              <p>Implement with clean structure and predictable conventions, keeping complexity under control.</p>
             </div>
           </div>
 
@@ -285,9 +251,7 @@
             <div class="step-index">03</div>
             <div class="step-body">
               <h3>Validate</h3>
-              <p>
-                Test functionality and edge cases, tighten UX, and remove friction before calling it ready.
-              </p>
+              <p>Test functionality and edge cases, tighten UX, and remove friction before calling it ready.</p>
             </div>
           </div>
 
@@ -295,16 +259,13 @@
             <div class="step-index">04</div>
             <div class="step-body">
               <h3>Ship</h3>
-              <p>
-                Release progressively, document decisions, and prepare the system to grow without becoming fragile.
-              </p>
+              <p>Release progressively, document decisions, and prepare the system to grow without becoming fragile.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="container">
         <div class="section-head">
@@ -323,21 +284,12 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
+        <!-- Footer mark (SVG only, guaranteed to match your repo) -->
         <span class="footer-mark" aria-hidden="true">
-          <picture>
-            <source srcset="BL_Logo_Stacked_Dark.svg" type="image/svg+xml" />
-            <img
-              src="BL_Logo_Stacked_Dark%202x.png"
-              srcset="BL_Logo_Stacked_Dark%202x.png 2x, BL_Logo_Stacked_Dark%204x.png 4x"
-              alt=""
-              decoding="async"
-              loading="lazy"
-            />
-          </picture>
+          <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" />
         </span>
 
         <span>© <span id="year"></span> BreachLabs Technologies</span>
@@ -348,7 +300,6 @@
   </footer>
 
   <script>
-    // Keeps the year current without manual edits
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
