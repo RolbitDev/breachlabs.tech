@@ -12,7 +12,7 @@
     content="BreachLabs Technologies is an independent software studio building practical products: apps, interactive systems, and business platforms."
   />
 
-  <!-- Site icons (only using the two files you already have in the repo root) -->
+  <!-- Favicons / browser icon -->
   <link rel="icon" type="image/svg+xml" href="breachlabs-icon-primary.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="breachlabs-icon-primary.png" />
   <link rel="apple-touch-icon" href="breachlabs-icon-primary.png" />
@@ -58,29 +58,22 @@
   <header class="site-header">
     <div class="container header-inner">
 
-      <!-- Brand (logo + name) -->
+      <!-- Brand (uses the horizontal logo as primary header identity) -->
       <a class="brand" href="#top" aria-label="BreachLabs home">
-        <span class="brand-logo" aria-hidden="true">
-          <picture>
-            <source srcset="breachlabs-icon-primary.svg" type="image/svg+xml" />
-            <img
-              src="breachlabs-icon-primary.png"
-              alt=""
-              width="36"
-              height="36"
-              loading="eager"
-              decoding="async"
-            />
-          </picture>
-        </span>
-
-        <span class="brand-text">
-          <span class="brand-name">
-            BreachLabs
-            <span class="brand-underline" aria-hidden="true"></span>
-          </span>
-          <span class="brand-sub">Technologies</span>
-        </span>
+        <!--
+          SVG-first with PNG fallback.
+          This pattern is safe in modern browsers and does not break if SVG fails.
+        -->
+        <picture class="brand-wordmark" aria-hidden="true">
+          <source srcset="BL_Logo_Horizontal_Dark.svg" type="image/svg+xml" />
+          <img
+            src="BL_Logo_Horizontal_Dark 2x.png"
+            srcset="BL_Logo_Horizontal_Dark 2x.png 2x, BL_Logo_Horizontal_Dark 4x.png 4x"
+            alt="BreachLabs Technologies"
+            decoding="async"
+            loading="eager"
+          />
+        </picture>
       </a>
 
       <!-- Navigation -->
@@ -97,8 +90,6 @@
     <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
-
-        <!-- Left: copy -->
         <div class="hero-copy">
           <p class="eyebrow">Independent Software Studio</p>
 
@@ -126,8 +117,21 @@
           </div>
         </div>
 
-        <!-- Right: clean capability panel -->
+        <!-- Right-side panel with a subtle stacked logo watermark -->
         <aside class="hero-panel" aria-label="Highlights">
+          <div class="hero-mark" aria-hidden="true">
+            <picture>
+              <source srcset="BL_Logo_Stacked_Dark.svg" type="image/svg+xml" />
+              <img
+                src="BL_Logo_Stacked_Dark 2x.png"
+                srcset="BL_Logo_Stacked_Dark 2x.png 2x, BL_Logo_Stacked_Dark 4x.png 4x"
+                alt=""
+                decoding="async"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+
           <div class="panel-top">
             <div class="panel-title">What we focus on</div>
             <div class="panel-sub">Clear outcomes, disciplined engineering, and dependable delivery.</div>
@@ -154,7 +158,6 @@
             <a class="panel-link" href="#approach">See how we work →</a>
           </div>
         </aside>
-
       </div>
     </section>
 
@@ -192,21 +195,6 @@
               Designed to reduce friction and improve visibility.
             </p>
           </article>
-        </div>
-
-        <div class="metrics">
-          <div class="metric">
-            <div class="metric-k">Standard</div>
-            <div class="metric-v">Maintainable codebase</div>
-          </div>
-          <div class="metric">
-            <div class="metric-k">Standard</div>
-            <div class="metric-v">Predictable structure</div>
-          </div>
-          <div class="metric">
-            <div class="metric-k">Standard</div>
-            <div class="metric-v">Release readiness</div>
-          </div>
         </div>
       </div>
     </section>
@@ -248,33 +236,11 @@
               Focused on clean core mechanics, progression systems, and scalable content.
             </p>
             <div class="tag-row">
-              <span class="tag">Gameplay Systems</span>
+              <span class="tag">Gameplay</span>
               <span class="tag">Solana</span>
               <span class="tag">R&amp;D</span>
             </div>
           </article>
-        </div>
-
-        <div class="grid-1">
-          <article class="card card-muted">
-            <div class="card-top">
-              <h3>Business Platform Concept</h3>
-              <span class="badge">System • Concept</span>
-            </div>
-            <p>
-              A larger product direction: a business platform designed to integrate smoothly into HR workflows
-              for payslips, holidays, and employee administration, with an emphasis on clarity and compliance.
-            </p>
-            <div class="tag-row">
-              <span class="tag">HR Ops</span>
-              <span class="tag">Workflows</span>
-              <span class="tag">Platform</span>
-            </div>
-          </article>
-        </div>
-
-        <div class="section-actions">
-          <a class="btn btn-primary" href="#contact">Contact</a>
         </div>
       </div>
     </section>
@@ -338,34 +304,15 @@
       <div class="container">
         <div class="section-head">
           <h2>Contact</h2>
-          <p class="section-sub">
-            For partnerships, collaboration, or general enquiries:
-          </p>
+          <p class="section-sub">For partnerships, collaboration, or general enquiries:</p>
         </div>
 
         <div class="card">
-          <div class="contact-grid">
-            <div class="contact-item">
-              <div class="contact-k">Email</div>
-              <div class="contact-v">
-                <a href="mailto:rolbitdev@gmail.com">rolbitdev@gmail.com</a>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-k">Domain</div>
-              <div class="contact-v">breachlabs.tech</div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-k">Note</div>
-              <div class="contact-v">Business email will be added soon.</div>
-            </div>
-          </div>
-
-          <p class="fineprint">
-            If you can share a short brief (what you’re building, timeline, constraints), it helps us respond with clarity.
+          <p class="contact-line">
+            <span>Email:</span>
+            <a href="mailto:rolbitdev@gmail.com">rolbitdev@gmail.com</a>
           </p>
+          <p class="fineprint">Business email will be added soon.</p>
         </div>
       </div>
     </section>
@@ -375,9 +322,20 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
+        <!-- Footer uses the stacked logo in a small, clean way -->
         <span class="footer-mark" aria-hidden="true">
-          <img src="breachlabs-icon-primary.png" alt="" />
+          <picture>
+            <source srcset="BL_Logo_Stacked_Dark.svg" type="image/svg+xml" />
+            <img
+              src="BL_Logo_Stacked_Dark 2x.png"
+              srcset="BL_Logo_Stacked_Dark 2x.png 2x, BL_Logo_Stacked_Dark 4x.png 4x"
+              alt=""
+              decoding="async"
+              loading="lazy"
+            />
+          </picture>
         </span>
+
         <span>© <span id="year"></span> BreachLabs Technologies</span>
       </div>
 
