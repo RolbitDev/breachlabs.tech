@@ -54,36 +54,24 @@ a:hover{ text-decoration: underline; }
   gap: 18px;
 }
 
-/* Brand container */
+/* Brand */
 .brand{
   display:flex;
   align-items:center;
-  gap: 12px;
-  color: var(--text);
   text-decoration:none;
   min-width: 0;
 }
 
-.brand:hover{ text-decoration:none; }
-
 /*
-  Wordmark lock:
-  - SVGs often have large intrinsic sizes
-  - The image is hard-constrained so it cannot take over the header
+  Wordmark size rules:
+  - Force consistent height so SVG cannot explode
+  - Increase size so it’s readable
 */
 .brand-wordmark{
-  display:inline-flex;
-  align-items:center;
-  justify-content:flex-start;
-  max-width: 360px;
-}
-
-.brand-wordmark img{
   display:block;
-  height: 26px;
-  max-height: 26px;
+  height: 34px;        /* desktop target size */
   width: auto;
-  max-width: 100%;
+  max-width: 420px;
   object-fit: contain;
   opacity: 0.96;
 }
@@ -98,7 +86,7 @@ a:hover{ text-decoration: underline; }
 
 .nav a{
   color: var(--muted);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 14px;
 }
 
@@ -213,6 +201,7 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   overflow: hidden;
 }
 
+/* Watermark logo */
 .hero-mark{
   position:absolute;
   right: -18px;
@@ -229,6 +218,7 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   display:block;
 }
 
+/* Panel content */
 .panel-top{
   position: relative;
   padding-bottom: 12px;
@@ -433,8 +423,8 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 }
 
 .footer-mark{
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -464,5 +454,7 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   .grid-3{ grid-template-columns: 1fr; }
   .grid-2{ grid-template-columns: 1fr; }
   .step{ grid-template-columns: 56px 1fr; }
-  .brand-wordmark img{ height: 22px; max-height: 22px; }
+
+  /* Slightly smaller logo on mobile */
+  .brand-wordmark{ height: 28px; }
 }
