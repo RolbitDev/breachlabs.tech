@@ -1,10 +1,10 @@
 /*
   ==========================================================
   BreachLabs Technologies - styles.css
-  Goals:
-  - Clean, modern dark UI
-  - Header that DOESN’T break when the logo is wide
-  - Footer that stays aligned and doesn’t show broken icons
+  Fixes in this version:
+  1) Header logo too small -> increased .brand-wordmark height
+  2) Footer logo too small -> increased .footer-mark size
+  3) Keep layout stable with caps so it still doesn’t crush nav
   ==========================================================
 */
 
@@ -48,9 +48,6 @@ a:hover{ text-decoration: underline; }
 
 /* ==========================================================
    HEADER
-   Key fix:
-   - Allow wrapping on medium widths
-   - Cap logo width so it cannot squeeze nav into vertical stacking
    ========================================================== */
 
 .site-header{
@@ -68,34 +65,29 @@ a:hover{ text-decoration: underline; }
   justify-content: space-between;
   padding: 14px 0;
   gap: 18px;
-
-  /* Important: allow header to wrap neatly (brand row + nav row) */
   flex-wrap: wrap;
 }
 
-/* Brand wrapper */
 .brand{
   display:flex;
   align-items:center;
   text-decoration:none;
   min-width: 0;
-
-  /* Let brand take available space but not force nav off-screen */
   flex: 1 1 auto;
 }
 
 /*
-  Wordmark size rules:
-  - Fixed height so SVG cannot “explode”
-  - Width capped so it can’t crush the nav
+  Header logo size:
+  - Increase height for better presence
+  - Keep max-width so it doesn’t crush nav
 */
 .brand-wordmark{
   display:block;
-  height: 34px;         /* desktop height */
+  height: 48px;         /* increased from 34px */
   width: auto;
-  max-width: 280px;     /* IMPORTANT: keeps header stable */
+  max-width: 360px;     /* increased but still capped for layout stability */
   object-fit: contain;
-  opacity: 0.96;
+  opacity: 0.98;
 }
 
 /* NAV */
@@ -103,12 +95,8 @@ a:hover{ text-decoration: underline; }
   display:flex;
   gap: 18px;
   align-items:center;
-
-  /* Allow nav to sit right, and wrap to next line if needed */
   justify-content: flex-end;
   flex: 0 1 auto;
-
-  /* If it wraps, it wraps as a row, not vertical single-word breaks */
   flex-wrap: wrap;
 }
 
@@ -116,8 +104,6 @@ a:hover{ text-decoration: underline; }
   color: var(--muted);
   font-weight: 600;
   font-size: 14px;
-
-  /* Prevent “What / We / Build” splitting into separate lines */
   white-space: nowrap;
 }
 
@@ -438,10 +424,7 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 }
 
 /* ==========================================================
-   FOOTER
-   Key fix:
-   - Add wrap support so it doesn’t break on small widths
-   - Keep the footer mark stable and aligned
+   FOOTER (bigger icon)
    ========================================================== */
 
 .site-footer{
@@ -457,8 +440,6 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   gap: 12px;
   color: rgba(255,255,255,0.70);
   font-size: 13px;
-
-  /* Allow footer content to wrap nicely instead of overflowing */
   flex-wrap: wrap;
 }
 
@@ -469,13 +450,17 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   min-width: 0;
 }
 
+/*
+  Footer mark size:
+  - Increased from 28x28 to 40x40 for visibility
+*/
 .footer-mark{
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow:hidden;
   border: 1px solid rgba(255,255,255,0.06);
   background: rgba(255,255,255,0.02);
@@ -498,24 +483,26 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   .hero-inner{ grid-template-columns: 1fr; }
   .hero-mark{ width: 180px; }
 
-  /* On medium screens, keep logo smaller to reduce header pressure */
   .brand-wordmark{
-    height: 32px;
-    max-width: 260px;
+    height: 44px;
+    max-width: 340px;
   }
 }
 
 @media (max-width: 760px){
-  /* Mobile: hide nav (simple + clean); can be replaced with a hamburger later */
   .nav{ display:none; }
 
   .grid-3{ grid-template-columns: 1fr; }
   .grid-2{ grid-template-columns: 1fr; }
   .step{ grid-template-columns: 56px 1fr; }
 
-  /* Slightly smaller logo on mobile */
   .brand-wordmark{
-    height: 28px;
-    max-width: 240px;
+    height: 40px;
+    max-width: 320px;
+  }
+
+  .footer-mark{
+    width: 36px;
+    height: 36px;
   }
 }
