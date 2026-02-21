@@ -1,3 +1,13 @@
+/*
+  ==========================================================
+  BreachLabs Technologies - styles.css
+  Goals:
+  - Clean, modern dark UI
+  - Header that DOESN’T break when the logo is wide
+  - Footer that stays aligned and doesn’t show broken icons
+  ==========================================================
+*/
+
 :root{
   --bg: #0b0f14;
   --surface: #101826;
@@ -36,7 +46,13 @@ a:hover{ text-decoration: underline; }
   margin: 0 auto;
 }
 
-/* HEADER */
+/* ==========================================================
+   HEADER
+   Key fix:
+   - Allow wrapping on medium widths
+   - Cap logo width so it cannot squeeze nav into vertical stacking
+   ========================================================== */
+
 .site-header{
   position: sticky;
   top:0;
@@ -52,26 +68,32 @@ a:hover{ text-decoration: underline; }
   justify-content: space-between;
   padding: 14px 0;
   gap: 18px;
+
+  /* Important: allow header to wrap neatly (brand row + nav row) */
+  flex-wrap: wrap;
 }
 
-/* Brand */
+/* Brand wrapper */
 .brand{
   display:flex;
   align-items:center;
   text-decoration:none;
   min-width: 0;
+
+  /* Let brand take available space but not force nav off-screen */
+  flex: 1 1 auto;
 }
 
 /*
   Wordmark size rules:
-  - Force consistent height so SVG cannot explode
-  - Increase size so it’s readable
+  - Fixed height so SVG cannot “explode”
+  - Width capped so it can’t crush the nav
 */
 .brand-wordmark{
   display:block;
-  height: 34px;        /* desktop target size */
+  height: 34px;         /* desktop height */
   width: auto;
-  max-width: 420px;
+  max-width: 280px;     /* IMPORTANT: keeps header stable */
   object-fit: contain;
   opacity: 0.96;
 }
@@ -81,13 +103,22 @@ a:hover{ text-decoration: underline; }
   display:flex;
   gap: 18px;
   align-items:center;
-  flex: 0 0 auto;
+
+  /* Allow nav to sit right, and wrap to next line if needed */
+  justify-content: flex-end;
+  flex: 0 1 auto;
+
+  /* If it wraps, it wraps as a row, not vertical single-word breaks */
+  flex-wrap: wrap;
 }
 
 .nav a{
   color: var(--muted);
   font-weight: 600;
   font-size: 14px;
+
+  /* Prevent “What / We / Build” splitting into separate lines */
+  white-space: nowrap;
 }
 
 .nav a:hover{ color: var(--text); text-decoration:none; }
@@ -99,7 +130,10 @@ a:hover{ text-decoration: underline; }
   background: rgba(255,255,255,0.02);
 }
 
-/* HERO */
+/* ==========================================================
+   HERO
+   ========================================================== */
+
 .hero{ padding: 64px 0 24px; }
 
 .hero-inner{
@@ -278,7 +312,10 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 
 .panel-link:hover{ text-decoration:none; color: rgba(255,255,255,0.92); }
 
-/* SECTIONS */
+/* ==========================================================
+   SECTIONS
+   ========================================================== */
+
 .section{ padding: 44px 0; }
 
 .section-head{
@@ -400,7 +437,13 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   font-size: 12px;
 }
 
-/* FOOTER */
+/* ==========================================================
+   FOOTER
+   Key fix:
+   - Add wrap support so it doesn’t break on small widths
+   - Keep the footer mark stable and aligned
+   ========================================================== */
+
 .site-footer{
   border-top: 1px solid var(--border);
   padding: 18px 0;
@@ -414,12 +457,16 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   gap: 12px;
   color: rgba(255,255,255,0.70);
   font-size: 13px;
+
+  /* Allow footer content to wrap nicely instead of overflowing */
+  flex-wrap: wrap;
 }
 
 .footer-left{
   display:flex;
   align-items:center;
   gap: 10px;
+  min-width: 0;
 }
 
 .footer-mark{
@@ -443,18 +490,32 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 
 .muted{ color: var(--muted); }
 
-/* Responsive */
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
 @media (max-width: 920px){
   .hero-inner{ grid-template-columns: 1fr; }
   .hero-mark{ width: 180px; }
+
+  /* On medium screens, keep logo smaller to reduce header pressure */
+  .brand-wordmark{
+    height: 32px;
+    max-width: 260px;
+  }
 }
 
 @media (max-width: 760px){
+  /* Mobile: hide nav (simple + clean); can be replaced with a hamburger later */
   .nav{ display:none; }
+
   .grid-3{ grid-template-columns: 1fr; }
   .grid-2{ grid-template-columns: 1fr; }
   .step{ grid-template-columns: 56px 1fr; }
 
   /* Slightly smaller logo on mobile */
-  .brand-wordmark{ height: 28px; }
+  .brand-wordmark{
+    height: 28px;
+    max-width: 240px;
+  }
 }
