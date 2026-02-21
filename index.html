@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!--
+    ==========================================================
+    BreachLabs Technologies - Static site (GitHub Pages)
+    Notes:
+    - Keep all referenced assets in the REPO ROOT (same folder as index.html)
+    - Prefer SVG for logos (crisp + scalable) and use PNG as fallback only
+    ==========================================================
+  -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -10,30 +18,62 @@
     content="BreachLabs Technologies is an independent software studio building practical products: apps, interactive systems, and business platforms."
   />
 
-  <!-- Site icon -->
-  <link rel="icon" type="image/svg+xml" href="breachlabs-icon-primary.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="breachlabs-icon-primary.png" />
+  <!--
+    ==========================================================
+    Canonical URL (helps Google understand the primary URL)
+    IMPORTANT: keep it EXACTLY your live domain.
+    ==========================================================
+  -->
+  <link rel="canonical" href="https://breachlabs.tech/" />
+
+  <!--
+    ==========================================================
+    FAVICON / SITE ICONS
+    Why multiple?
+    - Browsers / devices / Google can pick different ones.
+    - Google often expects a valid icon at the root and/or common rels.
+    Tips:
+    - GitHub Pages is case-sensitive.
+    - Ensure these files exist exactly as named in the repo root.
+    ==========================================================
+  -->
+  <link rel="icon" href="breachlabs-icon-primary.svg" type="image/svg+xml" />
+  <link rel="icon" href="breachlabs-icon-primary.png" type="image/png" sizes="32x32" />
   <link rel="apple-touch-icon" href="breachlabs-icon-primary.png" />
 
-  <!-- Social -->
+  <!-- Optional but helpful: color for mobile browser UI -->
+  <meta name="theme-color" content="#0b0f14" />
+
+  <!--
+    ==========================================================
+    SOCIAL (Open Graph + Twitter)
+    Use ABSOLUTE URLs (not relative) for best compatibility.
+    ==========================================================
+  -->
   <meta property="og:title" content="BreachLabs Technologies" />
   <meta property="og:description" content="An independent software studio building apps, interactive systems, and business platforms." />
   <meta property="og:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
-  <meta property="og:url" content="https://breachlabs.tech" />
+  <meta property="og:url" content="https://breachlabs.tech/" />
   <meta property="og:type" content="website" />
 
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="BreachLabs Technologies" />
   <meta name="twitter:description" content="An independent software studio building apps, interactive systems, and business platforms." />
   <meta name="twitter:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
 
-  <!-- Organization schema -->
+  <!--
+    ==========================================================
+    Organization schema
+    - Keep logo as an absolute URL
+    - Keep URL consistent with canonical
+    ==========================================================
+  -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "BreachLabs Technologies",
-      "url": "https://breachlabs.tech",
+      "url": "https://breachlabs.tech/",
       "logo": "https://breachlabs.tech/breachlabs-icon-primary.png",
       "email": "rolbitdev@gmail.com"
     }
@@ -47,20 +87,34 @@
     rel="stylesheet"
   />
 
+  <!-- Site CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <!--
+    ==========================================================
+    HEADER
+    Fixes implemented:
+    - Header can WRAP cleanly on tighter widths
+    - Brand is size-capped so SVG can’t push nav into vertical stacking
+    - Nav uses nowrap links; on medium widths it drops below brand
+    ==========================================================
+  -->
   <header class="site-header">
     <div class="container header-inner">
       <!-- Brand -->
       <a class="brand" href="#top" aria-label="BreachLabs home">
-        <!-- Using SVG only to avoid filename mismatch and 404s -->
+        <!--
+          Use the MASTER DIGITAL SVG for header (per your cheat sheet).
+          Keep it SVG for perfect scaling.
+        -->
         <img
           class="brand-wordmark"
           src="BL_Logo_Horizontal_Dark.svg"
           alt="BreachLabs Technologies"
           decoding="async"
+          loading="eager"
         />
       </a>
 
@@ -106,9 +160,9 @@
         </div>
 
         <aside class="hero-panel" aria-label="Highlights">
-          <!-- Watermark -->
+          <!-- Watermark (SVG first, per your rule) -->
           <div class="hero-mark" aria-hidden="true">
-            <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" />
+            <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" loading="lazy" />
           </div>
 
           <div class="panel-top">
@@ -284,12 +338,19 @@
     </section>
   </main>
 
+  <!--
+    ==========================================================
+    FOOTER
+    Fixes implemented:
+    - Footer stays aligned on narrow widths
+    - Footer mark uses the stacked SVG but is size-controlled
+    ==========================================================
+  -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <!-- Footer mark (SVG only, guaranteed to match your repo) -->
         <span class="footer-mark" aria-hidden="true">
-          <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" />
+          <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" loading="lazy" />
         </span>
 
         <span>© <span id="year"></span> BreachLabs Technologies</span>
@@ -299,6 +360,7 @@
     </div>
   </footer>
 
+  <!-- Small JS: update year automatically -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
