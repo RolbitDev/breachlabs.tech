@@ -1,10 +1,12 @@
 /*
   ==========================================================
   BreachLabs Technologies - styles.css
-  Fixes in this version:
-  1) Header logo too small -> increased .brand-wordmark height
-  2) Footer logo too small -> increased .footer-mark size
-  3) Keep layout stable with caps so it still doesn’t crush nav
+  Version: Header/Footer sizing + layout fixes
+  Goals:
+  - Bigger, readable header logo WITHOUT a huge empty brand block
+  - Nav stays on the right
+  - Footer icon bigger but footer not "inflated"
+  - Responsive behavior stays clean
   ==========================================================
 */
 
@@ -48,6 +50,10 @@ a:hover{ text-decoration: underline; }
 
 /* ==========================================================
    HEADER
+   Fixes:
+   - brand no longer stretches across the header (removes "empty block")
+   - nav stays pinned to the right
+   - logo is bigger + controlled by height/max-width
    ========================================================== */
 
 .site-header{
@@ -63,28 +69,28 @@ a:hover{ text-decoration: underline; }
   display:flex;
   align-items:center;
   justify-content: space-between;
-  padding: 14px 0;
+  padding: 16px 0;            /* a touch taller so larger logo feels intentional */
   gap: 18px;
+
+  /* Allow wrapping if width is tight */
   flex-wrap: wrap;
 }
 
+/* Brand wrapper: DO NOT let it grow and steal space */
 .brand{
   display:flex;
   align-items:center;
   text-decoration:none;
   min-width: 0;
-  flex: 1 1 auto;
+  flex: 0 0 auto;             /* key fix: no stretching */
 }
 
-/*
-  Header logo size:
-  - Keep max-width so it doesn’t crush nav
-*/
+/* Header logo */
 .brand-wordmark{
   display:block;
-  height: 60px;         
+  height: 60px;               /* bigger logo */
   width: auto;
-  max-width: 420px;     /* increased but still capped for layout stability */
+  max-width: 320px;           /* prevents it from consuming too much horizontal room */
   object-fit: contain;
   opacity: 0.98;
 }
@@ -97,13 +103,16 @@ a:hover{ text-decoration: underline; }
   justify-content: flex-end;
   flex: 0 1 auto;
   flex-wrap: wrap;
+
+  /* key fix: keep nav on the far right */
+  margin-left: auto;
 }
 
 .nav a{
   color: var(--muted);
   font-weight: 600;
   font-size: 14px;
-  white-space: nowrap;
+  white-space: nowrap;        /* prevents "What / We / Build" splitting */
 }
 
 .nav a:hover{ color: var(--text); text-decoration:none; }
@@ -423,7 +432,9 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 }
 
 /* ==========================================================
-   FOOTER (bigger icon)
+   FOOTER
+   Fix:
+   - Bigger icon, but consistent sizing so footer doesn't feel inflated
    ========================================================== */
 
 .site-footer{
@@ -449,13 +460,10 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   min-width: 0;
 }
 
-/*
-  Footer mark size:
-  - Increased from 28x28 to 40x40 for visibility
-*/
+/* Footer mark size (stable across desktop + mobile) */
 .footer-mark{
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -482,26 +490,30 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   .hero-inner{ grid-template-columns: 1fr; }
   .hero-mark{ width: 180px; }
 
+  /* Slightly smaller header logo on medium screens */
   .brand-wordmark{
-    height: 44px;
-    max-width: 340px;
+    height: 54px;
+    max-width: 300px;
   }
 }
 
 @media (max-width: 760px){
+  /* Mobile: keep it simple (nav hidden). Add hamburger later if needed */
   .nav{ display:none; }
 
   .grid-3{ grid-template-columns: 1fr; }
   .grid-2{ grid-template-columns: 1fr; }
   .step{ grid-template-columns: 56px 1fr; }
 
+  /* Mobile header logo still readable */
   .brand-wordmark{
-    height: 40px;
-    max-width: 320px;
+    height: 48px;
+    max-width: 280px;
   }
 
+  /* Keep footer icon consistent (not oversized) */
   .footer-mark{
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
   }
 }
