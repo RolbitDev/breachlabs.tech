@@ -9,7 +9,7 @@
   - Responsive behavior stays clean
   ==========================================================
 */
-
+body { outline: 5px solid red; }
 
 :root{
   --bg: #0b0f14;
