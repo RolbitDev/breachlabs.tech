@@ -3,10 +3,14 @@
 <head>
   <!--
     ==========================================================
-    BreachLabs Technologies - Static site (GitHub Pages)
-    Notes:
-    - Keep all referenced assets in the REPO ROOT (same folder as index.html)
-    - Prefer SVG for logos (crisp + scalable) and use PNG as fallback only
+    BreachLabs Technologies - GitHub Pages static site
+    Fixes in this version:
+    1) Larger header/footer logo sizing is handled in CSS (styles.css)
+    2) Favicon strategy improved for Google:
+       - Adds /favicon.ico (MOST IMPORTANT for Google)
+       - Adds 48x48+ PNG options
+       - Adds web manifest for richer icon discovery
+       - Adds cache-busting query string ?v=2 on icon URLs
     ==========================================================
   -->
   <meta charset="utf-8" />
@@ -18,54 +22,56 @@
     content="BreachLabs Technologies is an independent software studio building practical products: apps, interactive systems, and business platforms."
   />
 
-  <!--
-    ==========================================================
-    Canonical URL (helps Google understand the primary URL)
-    IMPORTANT: keep it EXACTLY your live domain.
-    ==========================================================
-  -->
+  <!-- Canonical URL -->
   <link rel="canonical" href="https://breachlabs.tech/" />
 
-  <!--
-    ==========================================================
-    FAVICON / SITE ICONS
-    Why multiple?
-    - Browsers / devices / Google can pick different ones.
-    - Google often expects a valid icon at the root and/or common rels.
-    Tips:
-    - GitHub Pages is case-sensitive.
-    - Ensure these files exist exactly as named in the repo root.
-    ==========================================================
-  -->
-  <link rel="icon" href="breachlabs-icon-primary.svg" type="image/svg+xml" />
-  <link rel="icon" href="breachlabs-icon-primary.png" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="breachlabs-icon-primary.png" />
-
-  <!-- Optional but helpful: color for mobile browser UI -->
+  <!-- Theme color (mobile browser UI color) -->
   <meta name="theme-color" content="#0b0f14" />
 
   <!--
     ==========================================================
+    FAVICON / ICONS (Google-focused)
+    IMPORTANT:
+    - Place favicon.ico in the REPO ROOT (same folder as index.html)
+    - Google very often uses favicon.ico if present
+    - Add 48x48 or larger PNG icons in addition to SVG
+    - Cache bust: ?v=2 (bump this number any time you change icons)
+    ==========================================================
+  -->
+  <link rel="icon" href="favicon.ico?v=2" sizes="any" />
+  <link rel="icon" href="breachlabs-icon-primary.svg?v=2" type="image/svg+xml" />
+
+  <!-- PNG favicons (48x48 helps Google; 32x32 helps browsers) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="breachlabs-icon-primary.png?v=2" />
+  <link rel="icon" type="image/png" sizes="48x48" href="breachlabs-icon-48.png?v=2" />
+
+  <!-- Apple / iOS -->
+  <link rel="apple-touch-icon" sizes="180x180" href="breachlabs-icon-180.png?v=2" />
+
+  <!-- PWA manifest (helps discovery of icons + standard metadata) -->
+  <link rel="manifest" href="site.webmanifest?v=2" />
+
+  <!--
+    ==========================================================
     SOCIAL (Open Graph + Twitter)
-    Use ABSOLUTE URLs (not relative) for best compatibility.
+    Use ABSOLUTE URLs.
+    Note: This affects link previews, not the Google favicon.
     ==========================================================
   -->
   <meta property="og:title" content="BreachLabs Technologies" />
   <meta property="og:description" content="An independent software studio building apps, interactive systems, and business platforms." />
-  <meta property="og:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
+  <meta property="og:image" content="https://breachlabs.tech/breachlabs-icon-180.png?v=2" />
   <meta property="og:url" content="https://breachlabs.tech/" />
   <meta property="og:type" content="website" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="BreachLabs Technologies" />
   <meta name="twitter:description" content="An independent software studio building apps, interactive systems, and business platforms." />
-  <meta name="twitter:image" content="https://breachlabs.tech/breachlabs-icon-primary.png" />
+  <meta name="twitter:image" content="https://breachlabs.tech/breachlabs-icon-180.png?v=2" />
 
   <!--
     ==========================================================
     Organization schema
-    - Keep logo as an absolute URL
-    - Keep URL consistent with canonical
     ==========================================================
   -->
   <script type="application/ld+json">
@@ -74,7 +80,7 @@
       "@type": "Organization",
       "name": "BreachLabs Technologies",
       "url": "https://breachlabs.tech/",
-      "logo": "https://breachlabs.tech/breachlabs-icon-primary.png",
+      "logo": "https://breachlabs.tech/breachlabs-icon-180.png?v=2",
       "email": "rolbitdev@gmail.com"
     }
   </script>
@@ -88,26 +94,18 @@
   />
 
   <!-- Site CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 
 <body>
-  <!--
-    ==========================================================
-    HEADER
-    Fixes implemented:
-    - Header can WRAP cleanly on tighter widths
-    - Brand is size-capped so SVG can’t push nav into vertical stacking
-    - Nav uses nowrap links; on medium widths it drops below brand
-    ==========================================================
-  -->
   <header class="site-header">
     <div class="container header-inner">
       <!-- Brand -->
       <a class="brand" href="#top" aria-label="BreachLabs home">
         <!--
-          Use the MASTER DIGITAL SVG for header (per your cheat sheet).
-          Keep it SVG for perfect scaling.
+          Header logo:
+          - SVG first (best quality)
+          - Size is controlled by CSS (.brand-wordmark)
         -->
         <img
           class="brand-wordmark"
@@ -131,7 +129,6 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-inner">
-
         <div class="hero-copy">
           <p class="eyebrow">Independent Software Studio</p>
 
@@ -160,7 +157,7 @@
         </div>
 
         <aside class="hero-panel" aria-label="Highlights">
-          <!-- Watermark (SVG first, per your rule) -->
+          <!-- Watermark -->
           <div class="hero-mark" aria-hidden="true">
             <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" loading="lazy" />
           </div>
@@ -189,7 +186,6 @@
             <a class="panel-link" href="#approach">See how we work →</a>
           </div>
         </aside>
-
       </div>
     </section>
 
@@ -338,17 +334,10 @@
     </section>
   </main>
 
-  <!--
-    ==========================================================
-    FOOTER
-    Fixes implemented:
-    - Footer stays aligned on narrow widths
-    - Footer mark uses the stacked SVG but is size-controlled
-    ==========================================================
-  -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
+        <!-- Footer mark (bigger sizing handled in CSS) -->
         <span class="footer-mark" aria-hidden="true">
           <img src="BL_Logo_Stacked_Dark .svg" alt="" decoding="async" loading="lazy" />
         </span>
@@ -360,8 +349,8 @@
     </div>
   </footer>
 
-  <!-- Small JS: update year automatically -->
   <script>
+    // Auto-update footer year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
