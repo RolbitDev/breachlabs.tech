@@ -82,9 +82,9 @@ a:hover{ text-decoration: underline; }
 */
 .brand-wordmark{
   display:block;
-  height: 250px;         
+  height: 72px;         
   width: auto;
-  max-width: 760px;     /* increased but still capped for layout stability */
+  max-width: 520px;     /* increased but still capped for layout stability */
   object-fit: contain;
   opacity: 0.98;
 }
@@ -501,7 +501,7 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   }
 
   .footer-mark{
-    width: 36px;
-    height: 36px;
+    width: 56px;
+    height: 56px;
   }
 }
