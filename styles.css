@@ -1,3 +1,5 @@
+/* BreachLabs Technologies — styles.css */
+
 :root{
   --bg: #0b0f14;
   --surface: #101826;
@@ -36,14 +38,7 @@ a:hover{ text-decoration: underline; }
   margin: 0 auto;
 }
 
-/* ==========================================================
-   HEADER
-   Fixes:
-   - brand no longer stretches across the header (removes "empty block")
-   - nav stays pinned to the right
-   - logo is bigger + controlled by height/max-width
-   ========================================================== */
-
+/* HEADER */
 .site-header{
   position: sticky;
   top:0;
@@ -57,40 +52,30 @@ a:hover{ text-decoration: underline; }
   display:flex;
   align-items:center;
   justify-content: space-between;
-  padding: 22px 0;            /* a touch taller so larger logo feels intentional */
+  padding: 22px 0;
   gap: 18px;
-
-  /* Allow wrapping if width is tight */
   flex-wrap: wrap;
 }
 
-/* Brand wrapper: DO NOT let it grow and steal space */
 .brand{
   display:flex;
   align-items:center;
   text-decoration:none;
   min-width: 0;
-  flex: 0 0 auto;             /* key fix: no stretching */
+  flex: 0 0 auto;
 }
 
-/* Header logo */
 .brand-wordmark{
-  display: block;
-
-  height: 80px;        /* make it clearly bigger */
+  display:block;
+  height: 80px;
   width: auto;
-
-  max-width: none;     /* remove width restriction */
-  
+  max-width: none;
   object-fit: contain;
-
-  transform: scale(1.4);   /* zoom inside the image */
+  transform: scale(1.4);
   transform-origin: left center;
-
-  margin-left: 0;
+  opacity: 0.98;
 }
 
-/* NAV */
 .nav{
   display:flex;
   gap: 18px;
@@ -98,8 +83,6 @@ a:hover{ text-decoration: underline; }
   justify-content: flex-end;
   flex: 0 1 auto;
   flex-wrap: wrap;
-
-  /* key fix: keep nav on the far right */
   margin-left: auto;
 }
 
@@ -107,7 +90,7 @@ a:hover{ text-decoration: underline; }
   color: var(--muted);
   font-weight: 600;
   font-size: 14px;
-  white-space: nowrap;        /* prevents "What / We / Build" splitting */
+  white-space: nowrap;
 }
 
 .nav a:hover{ color: var(--text); text-decoration:none; }
@@ -119,10 +102,7 @@ a:hover{ text-decoration: underline; }
   background: rgba(255,255,255,0.02);
 }
 
-/* ==========================================================
-   HERO
-   ========================================================== */
-
+/* HERO */
 .hero{ padding: 64px 0 24px; }
 
 .hero-inner{
@@ -213,7 +193,7 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   font-weight: 600;
 }
 
-/* Hero panel */
+/* HERO PANEL */
 .hero-panel{
   position: relative;
   border-radius: var(--radius);
@@ -224,7 +204,6 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   overflow: hidden;
 }
 
-/* Watermark logo */
 .hero-mark{
   position:absolute;
   right: -18px;
@@ -241,7 +220,6 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   display:block;
 }
 
-/* Panel content */
 .panel-top{
   position: relative;
   padding-bottom: 12px;
@@ -301,10 +279,7 @@ h3{ font-size: 18px; margin-bottom: 8px; }
 
 .panel-link:hover{ text-decoration:none; color: rgba(255,255,255,0.92); }
 
-/* ==========================================================
-   SECTIONS
-   ========================================================== */
-
+/* SECTIONS */
 .section{ padding: 44px 0; }
 
 .section-head{
@@ -426,16 +401,11 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   font-size: 12px;
 }
 
-/* ==========================================================
-   FOOTER
-   Fix:
-   - Bigger icon, but consistent sizing so footer doesn't feel inflated
-   ========================================================== */
-
+/* FOOTER */
 .site-footer{
   border-top: 1px solid var(--border);
-  padding: 16px 0;
-  margin-top: 20px;
+  padding: 10px 0;                 /* reduced to make footer shorter */
+  margin-top: 12px;                /* reduced spacing above footer */
 }
 
 .footer-inner{
@@ -445,7 +415,8 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   gap: 12px;
   color: rgba(255,255,255,0.70);
   font-size: 13px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;               /* prevents footer from creating extra height */
+  min-height: 52px;                /* keeps it compact and consistent */
 }
 
 .footer-left{
@@ -455,20 +426,18 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   min-width: 0;
 }
 
-/* Footer mark size (stable across desktop + mobile) */
+/* Smaller container, bigger visual logo via scaling */
 .footer-mark{
-  width: 44px;
-  height: 44px;
-
+  width: 42px;
+  height: 42px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-
   border-radius: 10px;
   overflow:hidden;
-
   border: 1px solid rgba(255,255,255,0.06);
   background: rgba(255,255,255,0.02);
+  flex: 0 0 auto;
 }
 
 .footer-mark img{
@@ -476,55 +445,53 @@ h3{ font-size: 18px; margin-bottom: 8px; }
   height: 100%;
   object-fit: contain;
   display:block;
-
-  transform: scale(1.35);        
-  transform-origin: center;      
+  transform: scale(1.55);          /* increase logo presence without growing footer */
+  transform-origin: center;
 }
 
 .muted{ color: var(--muted); }
 
-/* ==========================================================
-   RESPONSIVE
-   ========================================================== */
-
+/* Responsive */
 @media (max-width: 920px){
   .hero-inner{ grid-template-columns: 1fr; }
   .hero-mark{ width: 180px; }
 
-  /* Slightly smaller header logo on medium screens */
   .brand-wordmark{
-    height: 54px;
-    max-width: 300px;
+    height: 64px;
+    transform: scale(1.35);
+    transform-origin: left center;
+  }
+
+  .footer-inner{
+    flex-wrap: wrap;
+    min-height: auto;
   }
 }
 
 @media (max-width: 760px){
-  /* Mobile: keep it simple (nav hidden). Add hamburger later if needed */
   .nav{ display:none; }
 
   .grid-3{ grid-template-columns: 1fr; }
   .grid-2{ grid-template-columns: 1fr; }
   .step{ grid-template-columns: 56px 1fr; }
 
-  /* Mobile header logo still readable */
   .brand-wordmark{
-    height: 48px;
-    max-width: 280px;
+    height: 54px;
+    transform: scale(1.25);
+    transform-origin: left center;
   }
 
-  /* Keep footer icon consistent (not oversized) */
+  .footer-inner{
+    flex-wrap: wrap;
+    min-height: auto;
+  }
+
   .footer-mark{
-  width: 64px;
-  height: 64px;
+    width: 40px;
+    height: 40px;
+  }
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 12px;
-  overflow: hidden;
-
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
-   }
+  .footer-mark img{
+    transform: scale(1.55);
+  }
 }
