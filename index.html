@@ -320,7 +320,16 @@
                The icon mark has no background and works correctly.
           ──────────────────────────────────────────────────────── -->
           <div class="hero-mark" aria-hidden="true">
-            <img src="BL_Icon_Primary.svg" alt="" decoding="async" loading="lazy" />
+            <!--
+              REVERTED: Back to BL_Logo_Stacked_Dark.svg.
+              The stacked logo has a dark background rect (#0D1117)
+              built into the SVG. At opacity: 0.10 on a dark panel,
+              that rect is nearly invisible and only the cyan wordmark
+              bleeds through subtly — exactly the desired effect.
+              BL_Icon_Primary.svg was incorrect here: its bright cyan
+              polygons rendered too visibly at the same opacity.
+            -->
+            <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" loading="lazy" />
           </div>
 
           <div class="panel-top">
