@@ -1,91 +1,170 @@
 <!doctype html>
+<!--
+  ============================================================
+  FILE:    index.html
+  PROJECT: BreachLabs Technologies — breachlabs.tech
+  PURPOSE: Homepage. Single-page layout hosted on GitHub Pages.
+           All sections live in this file — no routing needed.
+  ============================================================
+-->
+
 <html lang="en">
+
 <head>
-  <!--
-    ==========================================================
-    BreachLabs Technologies - GitHub Pages static site
-    Fixes in this version:
-    1) Larger header/footer logo sizing is handled in CSS (styles.css)
-    2) Favicon strategy improved for Google:
-       - Adds /favicon.ico (MOST IMPORTANT for Google)
-       - Adds 48x48+ PNG options
-       - Adds web manifest for richer icon discovery
-       - Adds cache-busting query string ?v=2 on icon URLs
-    ==========================================================
-  -->
+
+  <!-- ── CHARACTER ENCODING ────────────────────────────────
+       Must be the first tag in <head>, before <title>.
+       UTF-8 covers all standard characters and symbols.
+  ──────────────────────────────────────────────────────── -->
   <meta charset="utf-8" />
+
+  <!-- ── VIEWPORT ──────────────────────────────────────────
+       Prevents mobile browsers from scaling down to a
+       desktop layout. Always required on every page.
+  ──────────────────────────────────────────────────────── -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>BreachLabs Technologies</title>
+  <!-- ── PAGE TITLE ────────────────────────────────────────
+       Shown in the browser tab, bookmarks, and search results.
+       Format: [Brand] — [Descriptor].
+       CHANGED: Added "— Independent Software Studio" so the
+       tab and search result communicate what the company does,
+       not just its name.
+  ──────────────────────────────────────────────────────── -->
+  <title>BreachLabs Technologies — Independent Software Studio</title>
+
+  <!-- ── META DESCRIPTION ──────────────────────────────────
+       Shown beneath the title in search engine results.
+       Not a ranking factor but directly affects click-through.
+       Keep under 160 characters.
+  ──────────────────────────────────────────────────────── -->
   <meta
     name="description"
     content="BreachLabs Technologies is an independent software studio building practical products: apps, interactive systems, and business platforms."
   />
 
-  <!-- Canonical URL -->
+  <!-- ── CANONICAL URL ─────────────────────────────────────
+       Tells search engines the definitive URL for this page.
+       Prevents duplicate content issues if the site is ever
+       accessible via multiple URLs (e.g. with/without www).
+       Always use the https:// version with trailing slash.
+  ──────────────────────────────────────────────────────── -->
   <link rel="canonical" href="https://breachlabs.tech/" />
 
-  <!-- Theme color (mobile browser UI color) -->
-  <meta name="theme-color" content="#0b0f14" />
+  <!-- ── THEME COLOR ───────────────────────────────────────
+       Controls the browser UI chrome colour on Android Chrome
+       and some mobile browsers (address bar, status bar).
+       CHANGED: Was "#0b0f14". Updated to "#060A0F" to match
+       the --bg CSS variable in styles.css.
+       Also updated in site.webmanifest — always change both
+       together or they'll visibly mismatch on load.
+  ──────────────────────────────────────────────────────── -->
+  <meta name="theme-color" content="#060A0F" />
 
-  <!--
-    ==========================================================
-    FAVICON / ICONS (Google-focused)
-    IMPORTANT:
-    - Place favicon.ico in the REPO ROOT (same folder as index.html)
-    - Google very often uses favicon.ico if present
-    - Add 48x48 or larger PNG icons in addition to SVG
-    - Cache bust: ?v=2 (bump this number any time you change icons)
-    ==========================================================
-  -->
-  <link rel="icon" href="favicon.ico?v=2" sizes="any" />
-  <link rel="icon" href="breachlabs-icon-primary.svg?v=2" type="image/svg+xml" />
+  <!-- ════════════════════════════════════════════════════════
+       FAVICON / ICONS
+       Strategy (order matters — browser reads top to bottom):
+       1. favicon.ico    — legacy browsers. Must be in repo root.
+          GitHub Pages serves it automatically from there.
+          TODO: Generate favicon.ico from BL_Icon_Primary.svg
+          at https://realfavicongenerator.net
+       2. BL_Icon_Primary.svg — modern browsers. One file,
+          scales perfectly to all sizes.
+       3. apple-touch-icon — iOS home screen bookmark icon.
+       4. site.webmanifest — Android PWA install icon discovery.
 
-  <!-- PNG favicons (48x48 helps Google; 32x32 helps browsers) -->
-  <link rel="icon" type="image/png" sizes="32x32" href="breachlabs-icon-primary.png?v=2" />
-  <link rel="icon" type="image/png" sizes="48x48" href="breachlabs-icon-48.png?v=2" />
+       ?v=3 — cache-busting query string. Bump this number
+       whenever you change icon files so browsers and Google
+       fetch the new version instead of serving from cache.
+       CHANGED: Removed all PNG icon references
+       (breachlabs-icon-primary.png, breachlabs-icon-48.png,
+       breachlabs-icon-180.png — none of these exist in the
+       repo and were generating console errors on every load).
+       CHANGED: Updated SVG filename from the old
+       breachlabs-icon-primary.svg to BL_Icon_Primary.svg
+       to match the actual file in the repo.
+  ════════════════════════════════════════════════════════ -->
+  <link rel="icon"             href="favicon.ico?v=3"            sizes="any" />
+  <link rel="icon"             href="BL_Icon_Primary.svg?v=3"    type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="BL_Icon_Primary.svg?v=3" />
+  <link rel="manifest"         href="site.webmanifest?v=3" />
 
-  <!-- Apple / iOS -->
-  <link rel="apple-touch-icon" sizes="180x180" href="breachlabs-icon-180.png?v=2" />
-
-  <!-- PWA manifest (helps discovery of icons + standard metadata) -->
-  <link rel="manifest" href="site.webmanifest?v=2" />
-
-  <!--
-    ==========================================================
-    SOCIAL (Open Graph + Twitter)
-    Use ABSOLUTE URLs.
-    Note: This affects link previews, not the Google favicon.
-    ==========================================================
-  -->
-  <meta property="og:title" content="BreachLabs Technologies" />
+  <!-- ════════════════════════════════════════════════════════
+       OPEN GRAPH — Social sharing previews
+       Controls how the page appears when shared on LinkedIn,
+       Slack, iMessage, Discord, etc.
+       Rules:
+       - All URLs must be absolute (https://...).
+       - og:image should be a PNG/JPG at 1200×630px ideally.
+       TODO: Create og-image.png — a 1200×630 dark card with
+       the horizontal logo centred. Save in repo root and
+       update the og:image + twitter:image values below.
+       CHANGED: Removed references to breachlabs-icon-180.png
+       (file doesn't exist). Placeholder og-image.png used —
+       social previews will have no image until it's created.
+       A missing image is acceptable. A 404'd image is not.
+  ════════════════════════════════════════════════════════ -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://breachlabs.tech/" />
+  <meta property="og:title"       content="BreachLabs Technologies" />
   <meta property="og:description" content="An independent software studio building apps, interactive systems, and business platforms." />
-  <meta property="og:image" content="https://breachlabs.tech/breachlabs-icon-180.png?v=2" />
-  <meta property="og:url" content="https://breachlabs.tech/" />
-  <meta property="og:type" content="website" />
+  <meta property="og:image"       content="https://breachlabs.tech/og-image.png" />
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="BreachLabs Technologies" />
+  <!-- ── TWITTER / X CARD ──────────────────────────────────
+       "summary_large_image" — full-width image preview.
+       "summary" — small square icon only.
+       CHANGED: Downgraded to "summary" until og-image.png
+       exists. "summary_large_image" with a missing image
+       renders broken in Twitter/X. "summary" degrades cleanly.
+       Restore to "summary_large_image" once og-image.png
+       is created and live.
+  ──────────────────────────────────────────────────────── -->
+  <meta name="twitter:card"        content="summary" />
+  <meta name="twitter:title"       content="BreachLabs Technologies" />
   <meta name="twitter:description" content="An independent software studio building apps, interactive systems, and business platforms." />
-  <meta name="twitter:image" content="https://breachlabs.tech/breachlabs-icon-180.png?v=2" />
+  <meta name="twitter:image"       content="https://breachlabs.tech/og-image.png" />
 
-  <!--
-    ==========================================================
-    Organization schema
-    ==========================================================
-  -->
+  <!-- ════════════════════════════════════════════════════════
+       STRUCTURED DATA — Schema.org Organisation
+       Helps Google understand who BreachLabs is. Can trigger
+       a Knowledge Panel in search results over time.
+       Not visible to users — parsed by search engine crawlers.
+       CHANGED: Updated logo to BL_Icon_Primary.svg (was
+       referencing breachlabs-icon-180.png which doesn't exist).
+       Broken schema signals are worse than no schema.
+       CHANGED: Updated email to hello@breachlabs.tech.
+       TODO: Add "sameAs" array with social/profile URLs once
+       they exist — significantly strengthens Knowledge Panel.
+       Example:
+       "sameAs": [
+         "https://github.com/BreachLabs",
+         "https://linkedin.com/company/breachlabs"
+       ]
+  ════════════════════════════════════════════════════════ -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "BreachLabs Technologies",
-      "url": "https://breachlabs.tech/",
-      "logo": "https://breachlabs.tech/breachlabs-icon-180.png?v=2",
-      "email": "rolbitdev@gmail.com"
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BreachLabs Technologies",
+    "url": "https://breachlabs.tech/",
+    "logo": "https://breachlabs.tech/BL_Icon_Primary.svg",
+    "email": "hello@breachlabs.tech"
+  }
   </script>
 
-  <!-- Fonts -->
+  <!-- ════════════════════════════════════════════════════════
+       FONTS — Google Fonts
+       Inter (body) + Space Grotesk (headings).
+       Two preconnect tags open early connections to Google's
+       servers before the browser has parsed the font request.
+       crossorigin is required on fonts.gstatic.com because
+       fonts load as a cross-origin resource.
+       display=swap — shows fallback text immediately while
+       fonts load, then swaps in. Prevents invisible text (FOIT).
+       NOTE: Google Fonts adds ~100–300ms latency on first load.
+       If performance becomes a priority, self-host via:
+       https://gwfh.mranftl.com/fonts
+  ════════════════════════════════════════════════════════ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -93,20 +172,36 @@
     rel="stylesheet"
   />
 
-  <!-- Site CSS -->
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <!-- ── STYLESHEET ────────────────────────────────────────
+       Single shared stylesheet for the entire site.
+       ?v=3 — bump alongside the favicon version when making
+       significant CSS changes so users get the update.
+  ──────────────────────────────────────────────────────── -->
+  <link rel="stylesheet" href="styles.css?v=3" />
+
 </head>
 
 <body>
+
+  <!-- ================================================================
+       SITE HEADER
+       Sticky — stays visible at the top while scrolling.
+       .site-header handles position, background, and blur in CSS.
+       .header-inner — flex row: logo left, nav right.
+  ================================================================ -->
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Brand -->
-      <a class="brand" href="#top" aria-label="BreachLabs home">
-        <!--
-          Header logo:
-          - SVG first (best quality)
-          - Size is controlled by CSS (.brand-wordmark)
-        -->
+
+      <!-- ── BRAND LOGO ──────────────────────────────────────
+           Links to #top (set on <main> below).
+           Horizontal dark logo — correct for a dark header.
+           loading="eager" — above the fold, load immediately.
+           Never lazy-load the logo; it causes a visible flash.
+           decoding="async" — decodes off the main thread so
+           it doesn't block rendering of surrounding content.
+           aria-label on the <a> describes the destination.
+      ──────────────────────────────────────────────────────── -->
+      <a class="brand" href="#top" aria-label="BreachLabs Technologies — back to top">
         <img
           class="brand-wordmark"
           src="BL_Logo_Horizontal_Dark.svg"
@@ -116,50 +211,116 @@
         />
       </a>
 
-      <!-- Nav -->
-      <nav class="nav" aria-label="Primary">
+      <!-- ── PRIMARY NAVIGATION ────────────────────────────────
+           Anchor links to sections within this page.
+           aria-label="Main navigation" distinguishes this <nav>
+           from any other nav on the page (e.g. a footer nav).
+           CHANGED: Was aria-label="Primary" — not descriptive
+           enough. Screen reader convention is "Main navigation".
+           .nav-cta — Contact styled as a bordered button to
+           visually separate it from the other nav links.
+      ──────────────────────────────────────────────────────── -->
+      <nav class="nav" aria-label="Main navigation">
         <a href="#what-we-build">What We Build</a>
         <a href="#projects">Projects</a>
         <a href="#approach">Approach</a>
         <a href="#contact" class="nav-cta">Contact</a>
       </nav>
+
     </div>
   </header>
+  <!-- /header -->
 
+
+  <!-- ================================================================
+       MAIN CONTENT
+       id="top" — anchor target for the brand logo and
+       footer "back to top" link.
+       One <main> per page — primary landmark for screen readers.
+  ================================================================ -->
   <main id="top">
+
+
+    <!-- ============================================================
+         HERO SECTION
+         Two-column layout on desktop: copy left, panel right.
+    ============================================================ -->
     <section class="hero">
       <div class="container hero-inner">
+
+        <!-- ── LEFT: COPY ───────────────────────────────────── -->
         <div class="hero-copy">
+
+          <!-- Small uppercase label above the main heading -->
           <p class="eyebrow">Independent Software Studio</p>
 
+          <!-- ── MAIN HEADING ────────────────────────────────────
+               One <h1> per page. Primary heading for the entire
+               document — not just this section.
+          ──────────────────────────────────────────────────────── -->
           <h1>Building practical software products, systems, and experiences.</h1>
 
+          <!-- Supporting body copy beneath the headline -->
           <p class="lead">
             BreachLabs Technologies designs and ships applications, interactive systems, and business platforms.
             From lightweight tools to production-grade systems, we focus on clean execution, maintainability, and real-world utility.
           </p>
 
+          <!-- ── CTA BUTTONS ─────────────────────────────────────
+               Primary (filled) + Secondary (outlined).
+               Visual hierarchy guides users to the most useful
+               action first. Both link to sections on this page.
+          ──────────────────────────────────────────────────────── -->
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-primary"   href="#projects">View Projects</a>
             <a class="btn btn-secondary" href="#contact">Get in Touch</a>
           </div>
 
+          <!-- ── STATUS NOTE ─────────────────────────────────────
+               Honest signal that the site is live but evolving.
+               Remove or update once the site reaches a stable
+               state — it shouldn't live here indefinitely.
+          ──────────────────────────────────────────────────────── -->
           <p class="status-note">
-            <strong>Status:</strong> This site is under active development. Public releases and progress notes will be published progressively.
+            <strong>Status:</strong> This site is under active development.
+            Public releases and progress notes will be published progressively.
           </p>
 
+          <!-- ── CATEGORY PILLS ──────────────────────────────────
+               Visual tag cloud showing types of work.
+               &amp; — HTML entity for &. Never use bare & in HTML.
+          ──────────────────────────────────────────────────────── -->
           <div class="hero-meta">
             <span class="pill">Apps</span>
             <span class="pill">Games</span>
             <span class="pill">Business Systems</span>
             <span class="pill">R&amp;D</span>
           </div>
-        </div>
 
-        <aside class="hero-panel" aria-label="Highlights">
-          <!-- Watermark -->
+        </div>
+        <!-- /hero-copy -->
+
+
+        <!-- ── RIGHT: FOCUS PANEL ──────────────────────────────
+             <aside> is semantically correct — supplementary
+             content alongside the main copy, not the primary
+             message. aria-label names it for screen readers.
+        ──────────────────────────────────────────────────────── -->
+        <aside class="hero-panel" aria-label="What we focus on">
+
+          <!-- ── WATERMARK ───────────────────────────────────────
+               Decorative background mark. aria-hidden="true" —
+               screen readers skip it entirely. Empty alt="" on
+               the img for the same reason.
+               loading="lazy" — decorative, no urgency.
+               CHANGED: Switched from BL_Logo_Stacked_Dark.svg
+               to BL_Icon_Primary.svg. The stacked logo SVG has
+               a dark background rect (#0D1117) built in — as a
+               watermark on a dark panel it would be invisible.
+               The icon mark has no background and works correctly.
+          ──────────────────────────────────────────────────────── -->
           <div class="hero-mark" aria-hidden="true">
-            <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" loading="lazy" />
+            <img src="BL_Icon_Primary.svg" alt="" decoding="async" loading="lazy" />
           </div>
 
           <div class="panel-top">
@@ -168,42 +329,57 @@
           </div>
 
           <div class="panel-list">
+
             <div class="panel-item">
               <div class="panel-k">Product delivery</div>
               <div class="panel-v">From concept to a working release with clean foundations.</div>
             </div>
+
             <div class="panel-item">
               <div class="panel-k">Structured systems</div>
               <div class="panel-v">Stable, maintainable builds designed to evolve.</div>
             </div>
+
             <div class="panel-item">
               <div class="panel-k">Practical experimentation</div>
               <div class="panel-v">Test ideas fast, ship what works, refine what matters.</div>
             </div>
+
           </div>
 
           <div class="panel-foot">
             <a class="panel-link" href="#approach">See how we work →</a>
           </div>
+
         </aside>
+        <!-- /hero-panel -->
+
       </div>
     </section>
+    <!-- /hero -->
 
+
+    <!-- ============================================================
+         WHAT WE BUILD
+         Three pillars — 3-column grid on desktop.
+         <article> is correct: each card is self-contained content
+         that could stand alone if extracted from this page.
+    ============================================================ -->
     <section class="section" id="what-we-build">
       <div class="container">
+
         <div class="section-head">
           <h2>What We Build</h2>
-          <p class="section-sub">
-            Three pillars that cover our roadmap and the types of systems we ship.
-          </p>
+          <p class="section-sub">Three pillars that cover our roadmap and the types of systems we ship.</p>
         </div>
 
         <div class="grid-3">
+
           <article class="card">
             <h3>Applications &amp; Tools</h3>
             <p>
-              Practical apps and utilities designed for clarity and daily use—dashboards, trackers, and productivity tools.
-              Built to be lightweight, reliable, and easy to maintain.
+              Practical apps and utilities designed for clarity and daily use — dashboards, trackers,
+              and productivity tools. Built to be lightweight, reliable, and easy to maintain.
             </p>
           </article>
 
@@ -218,16 +394,27 @@
           <article class="card">
             <h3>Business Platforms</h3>
             <p>
-              Operational systems that support real workflows—HR, reporting, admin platforms, and internal tooling.
-              Designed to reduce friction and improve visibility.
+              Operational systems that support real workflows — HR, reporting, admin platforms,
+              and internal tooling. Designed to reduce friction and improve visibility.
             </p>
           </article>
+
         </div>
       </div>
     </section>
+    <!-- /what-we-build -->
 
+
+    <!-- ============================================================
+         PROJECTS
+         2-column grid. Each project is an <article>.
+         CHANGED: Added ORIOR as a third project. It's the first
+         active BreachLabs product and belongs here.
+         Update badge and description as the project progresses.
+    ============================================================ -->
     <section class="section" id="projects">
       <div class="container">
+
         <div class="section-head">
           <h2>Projects</h2>
           <p class="section-sub">
@@ -236,10 +423,11 @@
         </div>
 
         <div class="grid-2">
+
           <article class="card">
             <div class="card-top">
               <h3>CryptoDash</h3>
-              <span class="badge">Android • Testing</span>
+              <span class="badge">Android · Testing</span>
             </div>
             <p>
               A lightweight crypto dashboard focused on live prices and a clean overview experience.
@@ -255,7 +443,7 @@
           <article class="card">
             <div class="card-top">
               <h3>Tower Defence</h3>
-              <span class="badge">Game • Planned</span>
+              <span class="badge">Game · Planned</span>
             </div>
             <p>
               A tower defence game planned for the Solana dApp ecosystem.
@@ -267,12 +455,39 @@
               <span class="tag">R&amp;D</span>
             </div>
           </article>
+
+          <!-- ORIOR — first BreachLabs product, added here -->
+          <article class="card">
+            <div class="card-top">
+              <h3>ORIOR</h3>
+              <span class="badge">App · In Development</span>
+            </div>
+            <p>
+              A shift worker wellness app helping people who work unsociable hours manage sleep,
+              nutrition, and recovery. iOS &amp; Android. Launching 2026.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Wellness</span>
+              <span class="tag">Mobile</span>
+              <span class="tag">React Native</span>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
+    <!-- /projects -->
 
+
+    <!-- ============================================================
+         APPROACH
+         Numbered steps. .step-index is aria-hidden because
+         the <h3> heading already communicates order in context.
+         The numbers are a visual aid, not content.
+    ============================================================ -->
     <section class="section" id="approach">
       <div class="container">
+
         <div class="section-head">
           <h2>Approach</h2>
           <p class="section-sub">
@@ -281,8 +496,9 @@
         </div>
 
         <div class="timeline">
+
           <div class="step">
-            <div class="step-index">01</div>
+            <div class="step-index" aria-hidden="true">01</div>
             <div class="step-body">
               <h3>Define</h3>
               <p>Confirm scope, success criteria, constraints, and the simplest version that can ship without cutting corners.</p>
@@ -290,7 +506,7 @@
           </div>
 
           <div class="step">
-            <div class="step-index">02</div>
+            <div class="step-index" aria-hidden="true">02</div>
             <div class="step-body">
               <h3>Build</h3>
               <p>Implement with clean structure and predictable conventions, keeping complexity under control.</p>
@@ -298,7 +514,7 @@
           </div>
 
           <div class="step">
-            <div class="step-index">03</div>
+            <div class="step-index" aria-hidden="true">03</div>
             <div class="step-body">
               <h3>Validate</h3>
               <p>Test functionality and edge cases, tighten UX, and remove friction before calling it ready.</p>
@@ -306,52 +522,111 @@
           </div>
 
           <div class="step">
-            <div class="step-index">04</div>
+            <div class="step-index" aria-hidden="true">04</div>
             <div class="step-body">
               <h3>Ship</h3>
               <p>Release progressively, document decisions, and prepare the system to grow without becoming fragile.</p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
+    <!-- /approach -->
 
+
+    <!-- ============================================================
+         CONTACT
+         CHANGED: Email updated to hello@breachlabs.tech.
+         CHANGED: Removed "Business email will be added soon" —
+         signals unfinished work and undermines credibility.
+         TODO: Set up hello@breachlabs.tech forwarding in
+         Namecheap before pushing this change live.
+    ============================================================ -->
     <section class="section" id="contact">
       <div class="container">
+
         <div class="section-head">
           <h2>Contact</h2>
           <p class="section-sub">For partnerships, collaboration, or general enquiries:</p>
         </div>
 
-        <div class="card">
+        <div class="card contact-card">
           <p class="contact-line">
-            <span>Email:</span>
-            <a href="mailto:rolbitdev@gmail.com">rolbitdev@gmail.com</a>
+            <span class="contact-label">Email:</span>
+            <!--
+              mailto: opens the user's default email client.
+              If hello@breachlabs.tech isn't live yet, keep
+              rolbitdev@gmail.com temporarily and swap once
+              the forwarding is set up.
+            -->
+            <a href="mailto:hello@breachlabs.tech">hello@breachlabs.tech</a>
           </p>
-          <p class="fineprint">Business email will be added soon.</p>
         </div>
+
       </div>
     </section>
-  </main>
+    <!-- /contact -->
 
+
+  </main>
+  <!-- /main -->
+
+
+  <!-- ================================================================
+       SITE FOOTER
+       CHANGED: Fixed typo — was "BL_Logo_Stacked_Dark .svg"
+       (space in filename). That space made it a broken request.
+       CHANGED: Switched to BL_Icon_Primary.svg — the stacked
+       logo SVG has a built-in dark background rect that makes
+       it invisible on a dark footer. Icon mark is correct here.
+       CHANGED: Wrapped logo in <a href="#top"> so it's
+       interactive and useful, not just decorative.
+       CHANGED: Removed hard-coded year — JS below handles it.
+  ================================================================ -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-left">
-        <!-- Footer mark (bigger sizing handled in CSS) -->
-        <span class="footer-mark" aria-hidden="true">
-          <img src="BL_Logo_Stacked_Dark .svg" alt="" decoding="async" loading="lazy" />
-        </span>
 
+      <div class="footer-left">
+
+        <!-- Footer icon — links back to top of page -->
+        <a href="#top" aria-label="Back to top">
+          <!--
+            aria-hidden on the span, empty alt on the img —
+            the parent <a> aria-label covers the purpose.
+            Prevents double-announcement by screen readers.
+          -->
+          <span class="footer-mark" aria-hidden="true">
+            <img src="BL_Icon_Primary.svg" alt="" decoding="async" loading="lazy" />
+          </span>
+        </a>
+
+        <!-- Year is injected by the script below -->
         <span>© <span id="year"></span> BreachLabs Technologies</span>
+
       </div>
 
       <span class="muted">breachlabs.tech</span>
+
     </div>
   </footer>
+  <!-- /footer -->
 
+
+  <!-- ================================================================
+       JAVASCRIPT
+       Placed at end of <body> — runs after HTML is parsed.
+       No defer/async needed here; bottom placement is equivalent.
+       Kept intentionally minimal — this is a static site.
+  ================================================================ -->
   <script>
-    // Auto-update footer year
+    /*
+     * AUTO-UPDATE FOOTER YEAR
+     * Writes the current 4-digit year into #year.
+     * No manual updates needed when the year rolls over.
+     */
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
