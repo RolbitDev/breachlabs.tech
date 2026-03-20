@@ -1,0 +1,10 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="100" height="100" fill="#0D1117" rx="18"/>
+
+  <!-- Icon Mark - centered in square -->
+  <g transform="translate(21, 11)">
+    <polygon points="0,0 58,0 58,30 38,30 8,62 0,62" fill="#0DCFCF"/>
+    <polygon points="46,36 58,36 58,78 0,78 0,66 20,66 46,36" fill="#0DCFCF"/>
+  </g>
+</svg>

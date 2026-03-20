@@ -1,0 +1,33 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="240" height="260" fill="#0D1117"/>
+
+  <!-- Icon Mark - centered, larger -->
+  <g transform="translate(85, 20) scale(1.25)">
+    <polygon points="0,0 58,0 58,30 38,30 8,62 0,62" fill="#0DCFCF"/>
+    <polygon points="46,36 58,36 58,78 0,78 0,66 20,66 46,36" fill="#0DCFCF"/>
+  </g>
+
+  <!-- Wordmark stacked -->
+  <text
+    x="120"
+    y="178"
+    text-anchor="middle"
+    font-family="'Courier New', 'Lucida Console', 'Consolas', monospace"
+    font-size="30"
+    font-weight="700"
+    letter-spacing="0.5"
+    fill="#FFFFFF">Breach<tspan fill="#0DCFCF">Labs</tspan></text>
+  <text
+    x="120"
+    y="200"
+    text-anchor="middle"
+    font-family="'Courier New', 'Lucida Console', 'Consolas', monospace"
+    font-size="9.5"
+    font-weight="400"
+    letter-spacing="4.5"
+    fill="#0DCFCF">TECHNOLOGIES</text>
+
+  <!-- Thin divider line -->
+  <line x1="40" y1="155" x2="200" y2="155" stroke="#0DCFCF" stroke-width="0.8" opacity="0.4"/>
+</svg>

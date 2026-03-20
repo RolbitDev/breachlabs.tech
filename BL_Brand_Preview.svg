@@ -1,0 +1,61 @@
+<svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="700" fill="#060A0F"/>
+
+  <!-- Title -->
+  <text x="30" y="40" font-family="'Courier New', monospace" font-size="11" fill="#4B5563" letter-spacing="3">BREACHLABS TECHNOLOGIES — BRAND ASSETS</text>
+  <line x1="30" y1="50" x2="570" y2="50" stroke="#1F2937" stroke-width="1"/>
+
+  <!-- Section 1: Horizontal Dark -->
+  <text x="30" y="80" font-family="'Courier New', monospace" font-size="9" fill="#4B5563" letter-spacing="2">HORIZONTAL — DARK BACKGROUND</text>
+  <rect x="30" y="90" width="540" height="120" fill="#0D1117" rx="8"/>
+  <!-- Icon -->
+  <g transform="translate(54, 104)">
+    <polygon points="0,0 58,0 58,30 38,30 8,62 0,62" fill="#0DCFCF"/>
+    <polygon points="46,36 58,36 58,78 0,78 0,66 20,66 46,36" fill="#0DCFCF"/>
+  </g>
+  <text x="145" y="148" font-family="'Courier New', monospace" font-size="32" font-weight="700" fill="#FFFFFF">Breach<tspan fill="#0DCFCF">Labs</tspan></text>
+  <text x="147" y="168" font-family="'Courier New', monospace" font-size="10" letter-spacing="5" fill="#0DCFCF">TECHNOLOGIES</text>
+
+  <!-- Section 2: Horizontal Light -->
+  <text x="30" y="240" font-family="'Courier New', monospace" font-size="9" fill="#4B5563" letter-spacing="2">HORIZONTAL — LIGHT BACKGROUND</text>
+  <rect x="30" y="250" width="540" height="120" fill="#F9FAFB" rx="8"/>
+  <g transform="translate(54, 264)">
+    <polygon points="0,0 58,0 58,30 38,30 8,62 0,62" fill="#0DCFCF"/>
+    <polygon points="46,36 58,36 58,78 0,78 0,66 20,66 46,36" fill="#0DCFCF"/>
+  </g>
+  <text x="145" y="308" font-family="'Courier New', monospace" font-size="32" font-weight="700" fill="#0D1117">Breach<tspan fill="#0DCFCF">Labs</tspan></text>
+  <text x="147" y="328" font-family="'Courier New', monospace" font-size="10" letter-spacing="5" fill="#0DCFCF">TECHNOLOGIES</text>
+
+  <!-- Section 3: Stacked + Icon -->
+  <text x="30" y="402" font-family="'Courier New', monospace" font-size="9" fill="#4B5563" letter-spacing="2">STACKED — DARK</text>
+  <rect x="30" y="412" width="260" height="260" fill="#0D1117" rx="8"/>
+  <g transform="translate(101, 432) scale(1.25)">
+    <polygon points="0,0 58,0 58,30 38,30 8,62 0,62" fill="#0DCFCF"/>
+    <polygon points="46,36 58,36 58,78 0,78 0,66 20,66 46,36" fill="#0DCFCF"/>
+  </g>
+  <line x1="70" y1="570" x2="250" y2="570" stroke="#0DCFCF" stroke-width="0.8" opacity="0.4"/>
+  <text x="160" y="590" text-anchor="middle" font-family="'Courier New', monospace" font-size="28" font-weight="700" fill="#FFFFFF">Breach<tspan fill="#0DCFCF">Labs</tspan></text>
+  <text x="160" y="610" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" letter-spacing="4" fill="#0DCFCF">TECHNOLOGIES</text>
+
+  <!-- Icon only -->
+  <text x="320" y="402" font-family="'Courier New', monospace" font-size="9" fill="#4B5563" letter-spacing="2">ICON MARK — FAVICON / APP</text>
+  <rect x="320" y="412" width="120" height="120" fill="#0D1117" rx="18"/>
+  <g transform="translate(341, 423)">
+    <polygon points="0,0 58,0 58,30 38,30 8,62 0,62" fill="#0DCFCF"/>
+    <polygon points="46,36 58,36 58,78 0,78 0,66 20,66 46,36" fill="#0DCFCF"/>
+  </g>
+
+  <!-- Color swatches -->
+  <text x="320" y="560" font-family="'Courier New', monospace" font-size="9" fill="#4B5563" letter-spacing="2">BRAND COLORS</text>
+  <rect x="320" y="570" width="50" height="30" fill="#0DCFCF" rx="4"/>
+  <text x="320" y="618" font-family="'Courier New', monospace" font-size="8" fill="#6B7280">#0DCFCF</text>
+  <rect x="382" y="570" width="50" height="30" fill="#0D1117" rx="4" stroke="#1F2937" stroke-width="1"/>
+  <text x="382" y="618" font-family="'Courier New', monospace" font-size="8" fill="#6B7280">#0D1117</text>
+  <rect x="444" y="570" width="50" height="30" fill="#FFFFFF" rx="4"/>
+  <text x="444" y="618" font-family="'Courier New', monospace" font-size="8" fill="#6B7280">#FFFFFF</text>
+
+  <!-- Footer -->
+  <line x1="30" y1="645" x2="570" y2="645" stroke="#1F2937" stroke-width="1"/>
+  <text x="30" y="662" font-family="'Courier New', monospace" font-size="9" fill="#374151" letter-spacing="2">breachlabs.tech</text>
+  <text x="570" y="662" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#374151" letter-spacing="1">© 2026 BREACHLABS TECHNOLOGIES</text>
+</svg>
