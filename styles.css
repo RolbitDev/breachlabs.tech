@@ -116,15 +116,17 @@ body {
    * Two soft radial glows create visual depth without images.
    * The final value is the solid base colour — always listed
    * last in a multi-layer background so it fills any gaps.
-   * CHANGED: Gradient colours updated from the old blue accent
-   * (#35c7ff) to the new brand cyan (#0DCFCF) with matching
-   * opacity values kept the same.
+   * REVERTED: Gradient colours back to the original blue values
+   * (#35c7ff / #2a9df4). The cyan accent (#0DCFCF) is used on
+   * UI elements (buttons, logo, links). The background glow
+   * using the same cyan made the page feel too flat — the
+   * original cooler blue gives better depth contrast.
    * Gradient positions (70% -10%, 10% 10%) place the glows
    * top-right and top-left for a natural light source feel.
    */
   background:
-    radial-gradient(1200px 700px at 70% -10%, rgba(13, 207, 207, 0.12), transparent 60%),
-    radial-gradient(900px 500px at 10% 10%,  rgba(10, 168, 168, 0.10), transparent 55%),
+    radial-gradient(1200px 700px at 70% -10%, rgba(53, 199, 255, 0.12), transparent 60%),
+    radial-gradient(900px 500px at 10% 10%,  rgba(42, 157, 244, 0.10), transparent 55%),
     var(--bg);
 }
 
@@ -252,11 +254,14 @@ h3 {
   z-index: 50;             /* sits above all page content           */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* ADDED: Safari prefix required */
-  background: rgba(6, 10, 15, 0.82);
+  background: rgba(11, 15, 20, 0.72);
   /*
-   * CHANGED: Was rgba(11,15,20,0.72). Updated to match the
-   * new --bg value (#060A0F) at slightly higher opacity (0.82)
-   * for better legibility on scroll when content passes behind.
+   * REVERTED: Back to the original rgba(11,15,20,0.72).
+   * Matching this too closely to --bg (#060A0F) caused the
+   * BL_Logo_Horizontal_Dark.svg (which has a built-in dark
+   * background rect at #0D1117) to blend into the header and
+   * disappear. The original value maintains enough contrast
+   * for the logo to render visibly.
    */
   border-bottom: 1px solid var(--border);
 }
