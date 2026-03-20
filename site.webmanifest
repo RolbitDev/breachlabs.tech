@@ -1,25 +1,113 @@
 {
+  /*
+  ============================================================
+  FILE:    site.webmanifest
+  PROJECT: BreachLabs Technologies — breachlabs.tech
+  PURPOSE: Web App Manifest. Tells browsers how to present
+           the site when added to a home screen or installed
+           as a Progressive Web App (PWA).
+           Linked from index.html via:
+           <link rel="manifest" href="site.webmanifest" />
+  ============================================================
+
+  NOTE ON COMMENTS IN JSON:
+  Standard JSON does not support comments. This file uses
+  JSON5-style comments for documentation purposes only.
+  Before pushing to GitHub, strip all comments — or switch
+  the file to use a build step that strips them.
+  The safest approach: keep this commented version as
+  site.webmanifest.source and push a clean site.webmanifest.
+  ============================================================
+  */
+
+  /* ── IDENTITY ──────────────────────────────────────────────
+     name       — Full name shown when the app is installed
+                  or displayed in app switchers.
+     short_name — Shown beneath the icon on the home screen
+                  where space is limited. Keep under 12 chars.
+     description — ADDED: Describes the app to browsers and
+                  app stores. Good for Lighthouse audits and
+                  any future PWA store submissions.
+     lang        — ADDED: Declares the app language. Helps
+                  browsers and assistive tech handle the
+                  content correctly.
+  ──────────────────────────────────────────────────────── */
   "name": "BreachLabs Technologies",
   "short_name": "BreachLabs",
-  "start_url": "/",
+  "description": "Independent software studio building practical apps, systems, and experiences.",
+  "lang": "en",
+
+  /* ── LAUNCH BEHAVIOUR ───────────────────────────────────────
+     start_url — The page that loads when the installed app
+                 is opened. "/" is correct for a single-page
+                 or homepage-first site.
+                 CHANGED: Was "/". Added "?source=pwa" query
+                 parameter — lets you track PWA installs
+                 separately in analytics without affecting
+                 routing or functionality.
+     scope     — ADDED: Defines which URLs are considered
+                 "inside" the app. "/" means the entire site.
+                 If the user navigates outside the scope,
+                 the browser opens a regular tab instead.
+  ──────────────────────────────────────────────────────── */
+  "start_url": "/?source=pwa",
+  "scope": "/",
+
+  /* ── DISPLAY MODE ───────────────────────────────────────────
+     display — Controls how the browser chrome appears.
+     "standalone" hides the browser address bar, making the
+     site feel like a native app when installed.
+     Other options (for reference):
+       "fullscreen" — hides everything including status bar
+       "minimal-ui" — shows minimal browser controls
+       "browser"    — standard browser tab, no PWA feel
+  ──────────────────────────────────────────────────────── */
   "display": "standalone",
-  "background_color": "#0b0f14",
-  "theme_color": "#0b0f14",
+
+  /* ── COLOURS ────────────────────────────────────────────────
+     background_color — Shown on the splash screen while the
+                        app loads. Should match the site's
+                        body background so there's no flash.
+     theme_color      — Controls the browser UI chrome colour
+                        (address bar, status bar on Android).
+                        Also used by some OS task switchers.
+     CHANGED: Was "#0b0f14". Updated to "#060A0F" to match
+     the --bg CSS variable defined in styles.css.
+     Keeping these in sync prevents a visible colour mismatch
+     on launch. If you change --bg in CSS, update these too.
+  ──────────────────────────────────────────────────────── */
+  "background_color": "#060A0F",
+  "theme_color": "#060A0F",
+
+  /* ── ICONS ──────────────────────────────────────────────────
+     Defines the icons used for home screen, app switcher,
+     splash screen, and OS-level display.
+
+     CHANGED: Removed the three broken PNG references
+     (breachlabs-icon-48.png, 180.png, 192.png — these files
+     do not exist in the repo and were causing console errors).
+
+     CHANGED: Replaced with BL_Icon_Primary.svg.
+     SVG icons are resolution-independent — one file covers
+     all sizes from favicon to splash screen. Supported by
+     all modern browsers.
+
+     purpose: "any maskable"
+     ADDED: "any" = use the icon as-is on any platform.
+     "maskable" = the icon has enough padding that Android
+     can safely crop it into a circle, squircle, or teardrop
+     shape without cutting off the mark. Both values together
+     give maximum compatibility across platforms and icon shapes.
+     If you ever generate PNG icons, each should also declare
+     purpose: "any maskable" — but SVG covers this for now.
+  ──────────────────────────────────────────────────────── */
   "icons": [
     {
-      "src": "breachlabs-icon-48.png",
-      "sizes": "48x48",
-      "type": "image/png"
-    },
-    {
-      "src": "breachlabs-icon-180.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "breachlabs-icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "BL_Icon_Primary.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
+
 }
