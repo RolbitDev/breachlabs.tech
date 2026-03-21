@@ -298,19 +298,14 @@ h3 {
 }
 
 /* ── BRAND WORDMARK (inline SVG) ────────────────────────────
-   CHANGED: Was styled for an <img> tag. Now targets an inline
-   <svg> element. Key differences:
-   - SVG needs explicit width, not just height, to size correctly
-   - transform: scale() workaround no longer needed — the SVG
-     viewBox (0 0 480 120) renders at the exact declared size
-   - overflow: visible ensures the SVG content isn't clipped
-   Height 48px with width auto (via aspect ratio) gives a clean
-   nav-bar size. Adjust height only — width scales automatically
-   via the viewBox 480:120 = 4:1 aspect ratio.
+   viewBox is "0 0 480 120" — aspect ratio 4:1.
+   At height 64px → rendered width = 256px. Clean nav size.
+   No transform scale needed — inline SVG renders at declared
+   dimensions exactly. overflow: visible so text isn't clipped.
 ──────────────────────────────────────────────────────────── */
 .brand-wordmark {
   display: block;
-  height: 48px;
+  height: 64px;
   width: auto;
   overflow: visible;
   opacity: 0.98;
@@ -531,11 +526,13 @@ h3 {
 }
 
 /* ── HERO MARK (watermark) ───────────────────────────────────
-   Decorative icon mark positioned in the top-right corner
-   of the panel. Bleeds outside the card visually but is
-   clipped by overflow: hidden on .hero-panel.
-   opacity: 0.10 — subtle, doesn't distract from the content.
-   pointer-events: none — the image doesn't intercept clicks.
+   Decorative icon mark in the top-right of the hero panel.
+   Now uses inline SVG — renders at exactly this declared width,
+   no external file loading, no intrinsic-size surprises.
+   opacity: 0.10 — subtle watermark effect. The cyan polygons
+   show faintly against the dark panel background.
+   pointer-events: none — doesn't intercept clicks.
+   overflow: hidden on .hero-panel clips anything that bleeds.
 ──────────────────────────────────────────────────────────── */
 .hero-mark {
   position: absolute;
@@ -546,7 +543,8 @@ h3 {
   pointer-events: none;
 }
 
-.hero-mark img {
+/* Target inline SVG inside hero-mark */
+.hero-mark svg {
   width: 100%;
   height: auto;
   display: block;
@@ -584,7 +582,10 @@ h3 {
   margin-top: 14px;
 }
 
-
+/* ── PANEL ITEM ──────────────────────────────────────────────
+   Individual focus item card nested inside the hero panel.
+   Uses --surface-2 equivalent opacity for the third depth level.
+──────────────────────────────────────────────────────────── -->
 .panel-item {
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.02);
@@ -632,7 +633,11 @@ h3 {
   padding: 44px 0;
 }
 
-
+/* ── SECTION HEADER ──────────────────────────────────────────
+   Two-column row: heading left, subtitle right.
+   align-items: flex-end aligns them to their bottom edges,
+   which looks more balanced when the two texts differ in size.
+──────────────────────────────────────────────────────────── -->
 .section-head {
   display: flex;
   align-items: flex-end;
@@ -706,7 +711,11 @@ h3 {
   margin-bottom: 10px;
 }
 
-
+/* ── BADGE ───────────────────────────────────────────────────
+   Status indicator shown in card-top: "Android · Testing" etc.
+   white-space: nowrap prevents "Android · Testing" from
+   wrapping mid-phrase if the card is narrow.
+──────────────────────────────────────────────────────────── -->
 .badge {
   padding: 6px 10px;
   border-radius: 999px;
@@ -747,7 +756,10 @@ h3 {
   border-color: rgba(255, 255, 255, 0.14);   /* ADDED */
 }
 
-
+/* ── STEP INDEX ──────────────────────────────────────────────
+   The "01", "02" etc. number. Monospaced headings font for
+   the tabular number alignment. font-weight: 800 for emphasis.
+──────────────────────────────────────────────────────────── -->
 .step-index {
   font-family: var(--font-heading);
   font-weight: 800;
@@ -766,12 +778,21 @@ h3 {
    CONTACT SECTION
    ============================================================ */
 
-
+/* ── CONTACT CARD ────────────────────────────────────────────
+   Overrides the default .card max-width to keep it from
+   stretching full-width on large screens.
+   ADDED: .contact-card was referenced in index.html but
+   never defined. Added the width constraint here.
+──────────────────────────────────────────────────────────── -->
 .contact-card {
   max-width: 560px;
 }
 
-
+/* ── CONTACT LINE ────────────────────────────────────────────
+   Flex row: "Email:" label + address link.
+   gap: 10px gives breathing room between label and value.
+   flex-wrap: wrap — wraps gracefully on very narrow screens.
+──────────────────────────────────────────────────────────── -->
 .contact-line {
   margin: 0;
   display: flex;
@@ -780,13 +801,24 @@ h3 {
   flex-wrap: wrap;
 }
 
-
+/* ── CONTACT LABEL ───────────────────────────────────────────
+   ADDED: Was referenced in index.html as .contact-label but
+   never defined in the original CSS. The original used a bare
+   <span> inside .contact-line with no class — this formalises
+   it consistently.
+──────────────────────────────────────────────────────────── -->
 .contact-label {
   color: var(--muted);
   font-weight: 600;
 }
 
-
+/* ── FINEPRINT ───────────────────────────────────────────────
+   Small footnote text. Kept for backwards compatibility.
+   NOTE: The !important was removed. It was only needed because
+   the original rule was fighting with .card p { margin: 0 }.
+   The correct fix is specificity: .card .fineprint targets
+   the element directly without !important.
+──────────────────────────────────────────────────────────── -->
 .card .fineprint {
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.60);
@@ -800,13 +832,25 @@ h3 {
    but never existed in the original CSS. Added here.
    ============================================================ */
 
-
+/* ── ERROR PAGE LAYOUT ───────────────────────────────────────
+   Constrains the 404 content to a readable column width and
+   adds generous vertical padding so the page doesn't look
+   empty. max-width: 560px keeps it from stretching wide.
+──────────────────────────────────────────────────────────── -->
 .error-page {
   padding: 96px 0 128px;
   max-width: 560px;
 }
 
-
+/* ── ERROR CODE ──────────────────────────────────────────────
+   Large decorative "404" number. Monospaced font gives it
+   a technical, code-like appearance consistent with the brand.
+   clamp() fluid sizing: 80px minimum → 160px on large screens.
+   Color uses --border (very low opacity white) so it reads as
+   a ghost/watermark behind the main heading — not competing.
+   letter-spacing: -4px tightens the number visually because
+   large monospaced digits have too much default spacing.
+──────────────────────────────────────────────────────────── -->
 .error-code {
   font-family: var(--font-mono);
   font-size: clamp(80px, 15vw, 160px);
@@ -828,7 +872,13 @@ h3 {
   margin-top: 12px;
 }
 
-
+/* ── FOOTER INNER ────────────────────────────────────────────
+   flex-wrap: nowrap — keeps the footer on one line. If content
+   grows and this causes overflow, change to wrap and add
+   a media query for small screens.
+   min-height: 52px — keeps footer height consistent even if
+   the icon changes size.
+──────────────────────────────────────────────────────────── -->
 .footer-inner {
   display: flex;
   justify-content: space-between;
@@ -845,37 +895,41 @@ h3 {
   align-items: center;
   gap: 10px;
   min-width: 0;
-  
-   
-   
+  /*
+   * min-width: 0 — prevents the flex child from refusing to
+   * shrink below its content size. Required when text inside
+   * might need to truncate.
+   */
 }
 
-
+/* ── FOOTER MARK ─────────────────────────────────────────────
+   Small icon container in the footer. Fixed 36×36px box.
+   Now uses inline SVG — renders at exactly this size, no
+   img intrinsic-size issues. No transform scale needed.
+   border + background give it a subtle framed appearance.
+──────────────────────────────────────────────────────────── */
 .footer-mark {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.02);
   flex: 0 0 auto;
-  transition: border-color 0.2s ease;   /* ADDED: hover feedback */
+  transition: border-color 0.2s ease;
 }
 
 .footer-mark:hover {
-  border-color: var(--accent);   /* ADDED: subtle brand accent on hover */
+  border-color: var(--accent);
 }
 
-.footer-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+/* Target inline SVG inside footer-mark */
+.footer-mark svg {
+  width: 20px;
+  height: auto;
   display: block;
-  transform: scale(1.55);
-  transform-origin: center;
 }
 
 
@@ -899,7 +953,7 @@ h3 {
 
   /* Scale down header logo at tablet width */
   .brand-wordmark {
-    height: 40px;
+    height: 52px;
   }
 
   /* Allow footer to wrap if needed at this width */
@@ -944,24 +998,13 @@ h3 {
 
   /* Scale down header logo further on mobile */
   .brand-wordmark {
-    height: 34px;
+    height: 44px;
   }
 
   /* Footer wraps on mobile */
   .footer-inner {
     flex-wrap: wrap;
     min-height: auto;
-  }
-
-  /* Slightly smaller footer icon on mobile */
-  .footer-mark {
-    width: 40px;
-    height: 40px;
-  }
-
-  /* Scale value stays the same — just re-declared for clarity */
-  .footer-mark img {
-    transform: scale(1.55);
   }
 
 }
