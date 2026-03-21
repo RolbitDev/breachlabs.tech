@@ -18,16 +18,21 @@
 
 :root {
 
-  /* ── COLOURS — BACKGROUNDS ──────────────────────────────
-     Three levels of depth for layering cards and surfaces.
-     CHANGED: --bg updated from #0b0f14 to #060A0F to match
-     the brand dark and the theme-color meta tag in HTML.
-     Always keep these three in sync:
-       1. --bg here
-       2. theme-color meta in index.html and 404.html
-       3. background_color + theme_color in site.webmanifest
-  ──────────────────────────────────────────────────────── */
-  --bg:        #060A0F;   /* page background — deepest level  */
+  /*
+   * REVERTED: --bg back to #0b0f14 (original value).
+   * Was temporarily changed to #060A0F to match the brand dark
+   * from the SVG files, but this darkened the effective header
+   * background colour (which is rgba blended against --bg),
+   * reducing contrast with the BL_Logo_Horizontal_Dark.svg
+   * background rect (#0D1117) and making the header logo
+   * disappear. Original value restored.
+   *
+   * !! ALWAYS UPDATE ALL THREE TOGETHER !!
+   * If you change this value, update:
+   *   → theme-color meta in index.html and 404.html
+   *   → background_color + theme_color in site.webmanifest
+   */
+  --bg:        #0b0f14;   /* page background — deepest level  */
   --surface:   #0D1117;   /* card/panel background — level 2  */
   --surface-2: #111827;   /* nested card background — level 3 */
 
@@ -292,26 +297,22 @@ h3 {
   flex: 0 0 auto;
 }
 
-/* ── BRAND WORDMARK IMAGE ────────────────────────────────────
-   The horizontal SVG logo loaded as an <img>.
-   height + transform scale approach: the SVG has whitespace
-   built into its viewBox, so we set a base height and scale
-   up visually without affecting layout flow.
-   transform-origin: left center — scales from the left edge
-   so the logo doesn't drift rightward when scaled.
-   NOTE: If the SVG viewBox is ever updated to remove the
-   built-in padding, remove the transform scale and adjust
-   the height directly instead. Scale is a workaround, not
-   a permanent solution.
-──────────────────────────────────────────────────────── -->
+/* ── BRAND WORDMARK (inline SVG) ────────────────────────────
+   CHANGED: Was styled for an <img> tag. Now targets an inline
+   <svg> element. Key differences:
+   - SVG needs explicit width, not just height, to size correctly
+   - transform: scale() workaround no longer needed — the SVG
+     viewBox (0 0 480 120) renders at the exact declared size
+   - overflow: visible ensures the SVG content isn't clipped
+   Height 48px with width auto (via aspect ratio) gives a clean
+   nav-bar size. Adjust height only — width scales automatically
+   via the viewBox 480:120 = 4:1 aspect ratio.
+──────────────────────────────────────────────────────────── */
 .brand-wordmark {
   display: block;
-  height: 80px;
+  height: 48px;
   width: auto;
-  max-width: none;
-  object-fit: contain;
-  transform: scale(1.4);
-  transform-origin: left center;
+  overflow: visible;
   opacity: 0.98;
 }
 
@@ -957,11 +958,9 @@ h3 {
     width: 180px;
   }
 
-  /* Scale down header logo */
+  /* Scale down header logo at tablet width */
   .brand-wordmark {
-    height: 64px;
-    transform: scale(1.35);
-    transform-origin: left center;
+    height: 40px;
   }
 
   /* Allow footer to wrap if needed at this width */
@@ -1006,9 +1005,7 @@ h3 {
 
   /* Scale down header logo further on mobile */
   .brand-wordmark {
-    height: 54px;
-    transform: scale(1.25);
-    transform-origin: left center;
+    height: 34px;
   }
 
   /* Footer wraps on mobile */
