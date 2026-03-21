@@ -206,6 +206,11 @@
            with only the background <rect> removed.
            aria-hidden on the SVG — the <a> aria-label is enough.
       ──────────────────────────────────────────────────────── -->
+      <!--
+        Inline SVG logo — no external file load, no background rect,
+        always visible regardless of header colour. Geometry taken
+        directly from BL_Logo_Horizontal_Dark.svg minus the <rect>.
+      -->
       <a class="brand" href="#top" aria-label="BreachLabs Technologies — back to top">
         <svg
           class="brand-wordmark"
@@ -213,24 +218,17 @@
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
-          <!-- Icon mark: two geometric blocks with diagonal breach gap -->
           <g transform="translate(24, 14)">
             <polygon points="0,0 58,0 58,30 38,30 8,62 0,62"    fill="#0DCFCF"/>
             <polygon points="46,36 58,36 58,78 0,78 0,66 20,66" fill="#0DCFCF"/>
           </g>
-          <!-- Wordmark -->
-          <text
-            x="114" y="58"
+          <text x="114" y="58"
             font-family="'Courier New','Lucida Console',Consolas,monospace"
-            font-size="32" font-weight="700" letter-spacing="0.5"
-            fill="#FFFFFF"
+            font-size="32" font-weight="700" letter-spacing="0.5" fill="#FFFFFF"
           >Breach<tspan fill="#0DCFCF">Labs</tspan></text>
-          <!-- Sub-wordmark -->
-          <text
-            x="116" y="78"
+          <text x="116" y="78"
             font-family="'Courier New','Lucida Console',Consolas,monospace"
-            font-size="10" font-weight="400" letter-spacing="5"
-            fill="#0DCFCF"
+            font-size="10" font-weight="400" letter-spacing="5" fill="#0DCFCF"
           >TECHNOLOGIES</text>
         </svg>
       </a>
@@ -343,17 +341,23 @@
                watermark on a dark panel it would be invisible.
                The icon mark has no background and works correctly.
           ──────────────────────────────────────────────────────── -->
+          <!--
+            WATERMARK: Inline SVG icon mark at low opacity.
+            Using inline SVG instead of <img src="...svg"> because
+            SVG files without explicit width/height on the root
+            element can render at their viewBox dimensions (240×260)
+            in some browsers, bursting out of the container entirely.
+            Inline SVG renders at exactly the CSS-declared size, always.
+            Geometry: just the two icon mark polygons, no background rect.
+            The dark panel behind it acts as the background naturally.
+          -->
           <div class="hero-mark" aria-hidden="true">
-            <!--
-              REVERTED: Back to BL_Logo_Stacked_Dark.svg.
-              The stacked logo has a dark background rect (#0D1117)
-              built into the SVG. At opacity: 0.10 on a dark panel,
-              that rect is nearly invisible and only the cyan wordmark
-              bleeds through subtly — exactly the desired effect.
-              BL_Icon_Primary.svg was incorrect here: its bright cyan
-              polygons rendered too visibly at the same opacity.
-            -->
-            <img src="BL_Logo_Stacked_Dark.svg" alt="" decoding="async" loading="lazy" />
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(21, 11)">
+                <polygon points="0,0 58,0 58,30 38,30 8,62 0,62"    fill="#0DCFCF"/>
+                <polygon points="46,36 58,36 58,78 0,78 0,66 20,66" fill="#0DCFCF"/>
+              </g>
+            </svg>
           </div>
 
           <div class="panel-top">
@@ -625,12 +629,17 @@
         <!-- Footer icon — links back to top of page -->
         <a href="#top" aria-label="Back to top">
           <!--
-            aria-hidden on the span, empty alt on the img —
-            the parent <a> aria-label covers the purpose.
-            Prevents double-announcement by screen readers.
+            Inline SVG for same reason as header and hero watermark —
+            SVG files loaded as <img> without explicit width/height
+            on the root element can render at uncontrolled sizes.
+            Inline SVG always renders at the CSS-declared size.
+            No background rect — footer surface acts as background.
           -->
           <span class="footer-mark" aria-hidden="true">
-            <img src="BL_Icon_Primary.svg" alt="" decoding="async" loading="lazy" />
+            <svg viewBox="0 0 58 92" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="0,0 58,0 58,30 38,30 8,62 0,62"    fill="#0DCFCF"/>
+              <polygon points="46,36 58,36 58,92 0,92 0,66 20,66" fill="#0DCFCF"/>
+            </svg>
           </span>
         </a>
 
