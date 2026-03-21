@@ -177,7 +177,7 @@
        ?v=3 — bump alongside the favicon version when making
        significant CSS changes so users get the update.
   ──────────────────────────────────────────────────────── -->
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 
 </head>
 
@@ -192,23 +192,47 @@
   <header class="site-header">
     <div class="container header-inner">
 
-      <!-- ── BRAND LOGO ──────────────────────────────────────
-           Links to #top (set on <main> below).
-           Horizontal dark logo — correct for a dark header.
-           loading="eager" — above the fold, load immediately.
-           Never lazy-load the logo; it causes a visible flash.
-           decoding="async" — decodes off the main thread so
-           it doesn't block rendering of surrounding content.
-           aria-label on the <a> describes the destination.
+      <!-- ── BRAND LOGO (inline SVG) ──────────────────────────
+           WHY INLINE SVG instead of <img src="...svg">:
+           The SVG file (BL_Logo_Horizontal_Dark.svg) has a dark
+           background rect (fill="#0D1117") baked in. When loaded
+           as an <img> on a dark header (#0b0f14), the rect blends
+           in and the logo becomes invisible — only ~2 points of
+           colour difference between the two darks.
+           Inlining the SVG without the background rect means the
+           mark and wordmark always render against whatever is
+           behind them. No contrast dependency. Always visible.
+           Geometry copied directly from BL_Logo_Horizontal_Dark.svg
+           with only the background <rect> removed.
+           aria-hidden on the SVG — the <a> aria-label is enough.
       ──────────────────────────────────────────────────────── -->
       <a class="brand" href="#top" aria-label="BreachLabs Technologies — back to top">
-        <img
+        <svg
           class="brand-wordmark"
-          src="BL_Logo_Horizontal_Dark.svg"
-          alt="BreachLabs Technologies"
-          decoding="async"
-          loading="eager"
-        />
+          viewBox="0 0 480 120"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <!-- Icon mark: two geometric blocks with diagonal breach gap -->
+          <g transform="translate(24, 14)">
+            <polygon points="0,0 58,0 58,30 38,30 8,62 0,62"    fill="#0DCFCF"/>
+            <polygon points="46,36 58,36 58,78 0,78 0,66 20,66" fill="#0DCFCF"/>
+          </g>
+          <!-- Wordmark -->
+          <text
+            x="114" y="58"
+            font-family="'Courier New','Lucida Console',Consolas,monospace"
+            font-size="32" font-weight="700" letter-spacing="0.5"
+            fill="#FFFFFF"
+          >Breach<tspan fill="#0DCFCF">Labs</tspan></text>
+          <!-- Sub-wordmark -->
+          <text
+            x="116" y="78"
+            font-family="'Courier New','Lucida Console',Consolas,monospace"
+            font-size="10" font-weight="400" letter-spacing="5"
+            fill="#0DCFCF"
+          >TECHNOLOGIES</text>
+        </svg>
       </a>
 
       <!-- ── PRIMARY NAVIGATION ────────────────────────────────
