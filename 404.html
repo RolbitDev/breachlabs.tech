@@ -1,113 +1,49 @@
 <!doctype html>
-<!--
-  ============================================================
-  FILE:    404.html
-  PROJECT: BreachLabs Technologies — breachlabs.tech
-  PURPOSE: Custom 404 error page. GitHub Pages automatically
-           serves this file for any URL that doesn't match a
-           real file in the repo — no server config needed.
-  ============================================================
--->
-
+<!-- GitHub Pages automatically serves this file for any unmatched URL -->
 <html lang="en">
 
 <head>
-
-  <!-- ── CHARACTER ENCODING ────────────────────────────────
-       Must be the first tag inside <head>, before <title>.
-       UTF-8 handles all standard characters including symbols
-       and emoji. No other encoding is needed for modern sites.
-  ──────────────────────────────────────────────────────── -->
   <meta charset="utf-8" />
-
-  <!-- ── VIEWPORT ──────────────────────────────────────────
-       Prevents mobile browsers from scaling down to fit a
-       desktop layout. Always include on every page.
-       initial-scale=1 ensures 1:1 pixel ratio on load.
-  ──────────────────────────────────────────────────────── -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" /> <!-- Prevents this page appearing in search results -->
 
-  <!-- ── ROBOTS ────────────────────────────────────────────
-       ADDED: Tells search engines not to index or follow
-       links on this page. You don't want a 404 page showing
-       up in Google results — this prevents that.
-  ──────────────────────────────────────────────────────── -->
-  <meta name="robots" content="noindex, nofollow" />
-
-  <!-- ── PAGE TITLE ────────────────────────────────────────
-       Shown in the browser tab and bookmarks.
-       Format: [State] — [Brand]. Em dash (—) not a hyphen.
-       CHANGED: Was "404 — BreachLabs". Added full title format
-       to stay consistent with the rest of the site's titles.
-  ──────────────────────────────────────────────────────── -->
   <title>404 — Page Not Found · BreachLabs Technologies</title>
-
-  <!-- ── META DESCRIPTION ──────────────────────────────────
-       Shown in search engine snippets beneath the page title.
-       Not a ranking factor but affects click-through rate.
-       Keep under 160 characters.
-  ──────────────────────────────────────────────────────── -->
   <meta name="description" content="Page not found on BreachLabs Technologies." />
 
-  <!-- ── FAVICON ───────────────────────────────────────────
-       ADDED: Was missing from the original. Links the browser
-       tab icon to the BreachLabs SVG icon mark.
-       SVG favicons scale perfectly at any size — no .ico needed.
-       rel="icon"             = browser tab icon
-       rel="apple-touch-icon" = iOS home screen / bookmark icon
-  ──────────────────────────────────────────────────────── -->
-  <link rel="icon" type="image/svg+xml" href="BL_Icon_Primary.svg" />
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="BL_Icon_Primary.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="BL_Icon_Primary.svg" />
 
-  <!-- ── STYLESHEET ────────────────────────────────────────
-       Single shared stylesheet for the entire site.
-       The 404 page inherits .container, .btn, .btn-primary
-       and all global styles without any duplication.
-       Path is relative to the repo root — correct for
-       GitHub Pages hosting.
-  ──────────────────────────────────────────────────────── -->
   <link rel="stylesheet" href="styles.css" />
-
 </head>
 
 <body>
 
-  <!-- ================================================================
-       SITE HEADER
-       ADDED: Was missing from the original. A user hitting a 404
-       should still see the nav — it helps them find what they were
-       looking for without pressing the back button.
-       This is copied from index.html. If you update the nav,
-       update it here too.
-       TODO: When the site grows, extract the nav into a shared
-       component (JS include or a static site generator like Eleventy).
-  ================================================================ -->
-  <header class="nav">
-    <div class="nav-inner container">
+  <header class="site-header">
+    <div class="container header-inner">
 
-      <!-- Logo — links back to homepage -->
-      <a href="./" class="nav-logo" aria-label="BreachLabs Technologies — go to homepage">
-        <!--
-          aria-label on the <a> describes the destination.
-          aria-hidden on the <svg> prevents the SVG from being
-          announced separately — the <a> label already covers it.
-        -->
-        <svg viewBox="0 0 58 92" xmlns="http://www.w3.org/2000/svg" class="nav-icon" aria-hidden="true">
-          <polygon points="0,0 58,0 58,30 38,30 8,62 0,62" fill="#0DCFCF"/>
-          <polygon points="46,36 58,36 58,92 0,92 0,66 20,66 46,36" fill="#0DCFCF"/>
+      <!-- Logo links back to homepage -->
+      <a class="brand" href="./" aria-label="BreachLabs Technologies — go to homepage">
+        <svg class="brand-wordmark" viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g transform="translate(24, 14)">
+            <polygon points="0,0 58,0 58,30 38,30 8,62 0,62"    fill="#0DCFCF"/>
+            <polygon points="46,36 58,36 58,78 0,78 0,66 20,66" fill="#0DCFCF"/>
+          </g>
+          <text x="114" y="58"
+            font-family="'Courier New','Lucida Console',Consolas,monospace"
+            font-size="32" font-weight="700" letter-spacing="0.5" fill="#FFFFFF"
+          >Breach<tspan fill="#0DCFCF">Labs</tspan></text>
+          <text x="116" y="78"
+            font-family="'Courier New','Lucida Console',Consolas,monospace"
+            font-size="10" font-weight="400" letter-spacing="5" fill="#0DCFCF"
+          >TECHNOLOGIES</text>
         </svg>
-        <span class="nav-wordmark">Breach<span class="accent">Labs</span></span>
       </a>
 
-      <!-- Primary navigation links -->
-      <nav class="nav-links" aria-label="Main navigation">
-        <!--
-          aria-label on <nav> distinguishes this from any other
-          <nav> elements on the page (e.g. a footer nav).
-          Hash links use ./#section — safer than /#section on
-          GitHub Pages where root path resolution can vary.
-        -->
-        <a href="./#build">What We Build</a>
+      <!-- Hash links use ./#section to resolve correctly from any path depth -->
+      <nav class="nav" aria-label="Main navigation">
+        <a href="./#what-we-build">What We Build</a>
         <a href="./#projects">Projects</a>
         <a href="./#approach">Approach</a>
         <a href="./#contact" class="nav-cta">Contact</a>
@@ -115,78 +51,44 @@
 
     </div>
   </header>
-  <!-- /header -->
 
-
-  <!-- ================================================================
-       MAIN CONTENT
-       <main> is the primary landmark — screen readers jump directly
-       to it with a keyboard shortcut. One per page, always.
-       CHANGED: Removed inline style="padding:64px 0". Inline styles
-       are hard to override and hard to find during debugging.
-       Added .error-page class in styles.css instead — one place
-       to control it, easy to find and change.
-  ================================================================ -->
+  <!-- Primary landmark — screen readers jump directly here -->
   <main class="container error-page">
 
-    <!-- ── ERROR CODE ────────────────────────────────────────
-         ADDED: Large decorative "404" number for visual clarity.
-         aria-hidden="true" — screen readers skip this entirely.
-         The <h1> below already communicates the error clearly
-         so we don't need to announce "404" twice.
-    ──────────────────────────────────────────────────────── -->
+    <!-- Decorative number — aria-hidden so screen readers skip it, the h1 below communicates the error -->
     <p class="error-code" aria-hidden="true">404</p>
 
-    <!-- ── ERROR HEADING ─────────────────────────────────────
-         One <h1> per page — the single top-level heading.
-         Plain language. No "Error 404", no technical jargon.
-    ──────────────────────────────────────────────────────── -->
     <h1>Page not found</h1>
 
-    <!-- ── SUPPORTING MESSAGE ────────────────────────────────
-         .lead is a shared utility in styles.css —
-         larger, lighter text for supporting copy under headings.
-         CHANGED: Added "or may have moved" — handles the case
-         where a user followed an old/broken link, not just a
-         typo. More helpful without being longer.
-    ──────────────────────────────────────────────────────── -->
     <p class="lead">This page doesn't exist or may have moved. Head back to the homepage.</p>
 
-    <!-- ── RECOVERY ACTION ───────────────────────────────────
-         Using <a> not <button> — this navigates to a URL,
-         not triggers a JS action. <a> is the correct semantic
-         element. .btn.btn-primary makes it visually prominent.
-         href="./" resolves to site root reliably on all hosts.
-         Safer than href="/" which can behave differently on
-         some subdirectory or GitHub Pages setups.
-    ──────────────────────────────────────────────────────── -->
+    <!-- <a> not <button> — this navigates to a URL, not triggers a JS action -->
     <a class="btn btn-primary" href="./">Go home</a>
 
   </main>
-  <!-- /main -->
 
-
-  <!-- ================================================================
-       SITE FOOTER
-       ADDED: Consistent with the rest of the site.
-       Even error pages should feel like part of the product.
-  ================================================================ -->
-  <footer class="footer">
-    <div class="footer-inner container">
+  <footer class="site-footer">
+    <div class="container footer-inner">
 
       <a href="./" class="footer-logo" aria-label="BreachLabs Technologies">
-        <svg viewBox="0 0 58 92" xmlns="http://www.w3.org/2000/svg" width="18" aria-hidden="true">
-          <polygon points="0,0 58,0 58,30 38,30 8,62 0,62" fill="#0DCFCF"/>
-          <polygon points="46,36 58,36 58,92 0,92 0,66 20,66 46,36" fill="#0DCFCF"/>
-        </svg>
+        <span class="footer-mark" aria-hidden="true">
+          <svg viewBox="0 0 58 92" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="0,0 58,0 58,30 38,30 8,62 0,62"    fill="#0DCFCF"/>
+            <polygon points="46,36 58,36 58,92 0,92 0,66 20,66" fill="#0DCFCF"/>
+          </svg>
+        </span>
       </a>
 
-      <span class="footer-copy">© 2026 BreachLabs Technologies</span>
-      <span class="footer-domain">breachlabs.tech</span>
+      <span>© <span id="year"></span> BreachLabs Technologies</span>
+      <span class="muted">breachlabs.tech</span>
 
     </div>
   </footer>
-  <!-- /footer -->
+
+  <script>
+    // Writes the current year so the copyright date never needs manual updating
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
