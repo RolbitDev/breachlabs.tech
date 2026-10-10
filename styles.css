@@ -49,9 +49,13 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  min-height: 100%;
+  scroll-padding-top: 130px;
+}
+
 body {
-  height: 100%;
+  min-height: 100vh;
 }
 
 body {
@@ -656,10 +660,17 @@ h3 { font-size: 18px; margin-bottom: 8px; }
 
 @media (max-width: 760px) {
 
-  /* TODO: Add a hamburger menu to replace the hidden nav on mobile */
+  .header-inner { padding: 12px 0; gap: 8px; }
   .nav {
-    display: none;
+    display: flex;
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+    gap: 8px 12px;
   }
+  .nav a { font-size: 12px; }
+  .nav-cta { padding: 6px 10px; }
+  html { scroll-padding-top: 150px; }
 
   .grid-3 { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
@@ -678,3 +689,7 @@ h3 { font-size: 18px; margin-bottom: 8px; }
   }
 
 }
+
+/* Keep section headings clear of the sticky header and support keyboard shortcuts. */
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; padding: 10px 14px; background: var(--bg); transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
