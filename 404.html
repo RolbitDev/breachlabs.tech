@@ -11,11 +11,10 @@
   <meta name="description" content="Page not found on BreachLabs Technologies." />
 
   <!-- Favicons -->
-  <link rel="icon" href="favicon.ico" sizes="any" />
-  <link rel="icon" href="BL_Icon_Primary.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="BL_Icon_Primary.svg" />
+  <link rel="icon" href="/BL_Icon_Primary.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 
 <body>
@@ -24,7 +23,7 @@
     <div class="container header-inner">
 
       <!-- Logo links back to homepage -->
-      <a class="brand" href="./" aria-label="BreachLabs Technologies — go to homepage">
+      <a class="brand" href="/" aria-label="BreachLabs Technologies — go to homepage">
         <svg class="brand-wordmark" viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <g transform="translate(24, 14)">
             <polygon points="0,0 58,0 58,30 38,30 8,62 0,62"    fill="#0DCFCF"/>
@@ -41,7 +40,7 @@
         </svg>
       </a>
 
-      <!-- Hash links use ./#section to resolve correctly from any path depth -->
+      <!-- Root-relative links recover correctly from any missing URL. -->
       <nav class="nav" aria-label="Main navigation">
         <a href="./#what-we-build">What We Build</a>
         <a href="./#projects">Projects</a>
