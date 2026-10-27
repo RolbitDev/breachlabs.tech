@@ -279,3 +279,5 @@ h1,h2,h3 { color:var(--warm); }
 /* Tester-interest links open email; enrolment happens separately. */
 .project-body>.tester-button { margin-top:14px; }
 .project-body>.tester-link { margin-top:14px; font-size:11px; }
+.policy-footer-links { display:flex; gap:20px; flex-wrap:wrap; font-size:13px; }
+.policy-footer-links a { color:#36d4cf; text-decoration:underline; text-underline-offset:4px; }
