@@ -275,3 +275,7 @@ h1,h2,h3 { color:var(--warm); }
  .release-layout { grid-template-columns:1fr; gap:22px; padding-top:35px; }
  .release-layout h2 { font-size:30px; }
 }
+
+/* Tester-interest links open email; enrolment happens separately. */
+.project-body>.tester-button { margin-top:14px; }
+.project-body>.tester-link { margin-top:14px; font-size:11px; }
